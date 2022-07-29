@@ -7,6 +7,12 @@ TagManager:
   - obstacle
   - collectible
   - finish
+  - Missile
+  - collectibleGhost
+  - collectiblePlayer
+  - ghost
+  - obstacleghost
+  - obstaclePalyer
   layers:
   - Default
   - TransparentFX

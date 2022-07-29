@@ -13,21 +13,48 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    public GameObject ghost;
+    public GameObject player;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("collectible"))
+        if (other.CompareTag("collectibleGhost"))
         {
-            // score islemleri.. animasyon.. efect.. collectiblen destroy edilmesi.. 
-            Debug.Log("collectible");
-            GameManager.instance.IncreaseScore();
-
+            ghost.SetActive(true);
+            gameObject.tag = "ghost";
+            player.SetActive(false);
+            Destroy(other.gameObject);
         }
-        else if (other.CompareTag("obstacle"))
+        else if (other.CompareTag("collectiblePlayer"))
         {
-            // score islemleri.. animasyon.. efect.. obstaclein destroy edilmesi.. 
-            // oyun bitebilir bunun kontrolu de burada yapilabilir..
-            Debug.Log("obstacle");
-            GameManager.instance.DecreaseScore();
+            player.SetActive(true);
+            gameObject.tag = "Player";
+            ghost.SetActive(false);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("obstacleghost"))
+        {
+            if (gameObject.tag=="ghost")
+            {
+                Debug.Log("ghost animasyonlarý yap");
+
+            }
+            else if (gameObject.tag=="Player")
+            {
+                Debug.Log("player animasyonlarý yap");
+            }
+        }
+        else if (other.CompareTag("obstaclePlayer"))
+        {
+            if (gameObject.tag == "ghost")
+            {
+                Debug.Log("ghost animasyonlarý yap");
+
+            }
+            else if (gameObject.tag == "Player")
+            {
+                Debug.Log("player animasyonlarý yap");
+            }
         }
         else if (other.CompareTag("finish"))
         {
@@ -52,7 +79,12 @@ public class PlayerController : MonoBehaviour
     public void PreStartingEvents()
 	{
         PlayerMovement.instance.transform.position = Vector3.zero;
+        PlayerController.instance.transform.position = Vector3.zero;
         GameManager.instance.isContinue = false;
+        ghost.SetActive(false);
+        player.SetActive(true);
+        gameObject.tag = "Player";
+       
 	}
 
     /// <summary>
