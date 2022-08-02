@@ -65,7 +65,11 @@ public class PlayerController : MonoBehaviour
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
                 ////düþme aniamsyonu falan ekle 
-                gameObject.transform.DOMoveY(-5f, 1f);
+
+               // anim.SetBool("run", false);
+                anim.SetBool("fall", true);
+                gameObject.transform.DOMove(new Vector3(transform.position.x,-10f,transform.position.z+4), 3f);
+
                 UiController.instance.OpenLosePanel();
                // cb.enabled = false;
 
@@ -99,7 +103,10 @@ public class PlayerController : MonoBehaviour
         ghost.SetActive(false);
         player.SetActive(true);
         gameObject.tag = "Player";
-        anim.SetBool("idle", true);
+        anim.SetBool("deneme", true);
+        //anim.SetBool("idle", true);
+        //anim.SetBool("fall", false);
+        //anim.SetBool("run ", false);
 
 
     }
