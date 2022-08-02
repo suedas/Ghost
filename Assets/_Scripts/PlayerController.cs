@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +17,17 @@ public class PlayerController : MonoBehaviour
 
     public GameObject ghost;
     public GameObject player;
+    public CinemachineVirtualCamera cb;
+    
+ 
+    Animator anim;
+    private void Start()
+    {
+        anim =player.GetComponent<Animator>();
+        anim.SetBool("run", false);
 
+        //anim.SetBool("idle", true);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("collectibleGhost"))
@@ -29,31 +41,34 @@ public class PlayerController : MonoBehaviour
         {
             player.SetActive(true);
             gameObject.tag = "Player";
+            anim.SetBool("run", true);
             ghost.SetActive(false);
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("obstacleghost"))
+        else if (other.CompareTag("duvar"))
         {
             if (gameObject.tag=="ghost")
             {
-                Debug.Log("ghost animasyonlarý yap");
-
+                //animasyon ekle 
+                
             }
             else if (gameObject.tag=="Player")
-            {
-                Debug.Log("player animasyonlarý yap");
+            {//buraya girmiyor
+                anim.SetBool("run", false);
+                UiController.instance.OpenLosePanel();
+                other.gameObject.GetComponent<Collider>().isTrigger = false;
             }
         }
-        else if (other.CompareTag("obstaclePlayer"))
+        else if (other.CompareTag("bosluk"))
         {
-            if (gameObject.tag == "ghost")
+            if (gameObject.tag=="Player")
             {
-                Debug.Log("ghost animasyonlarý yap");
+                //gameObject.GetComponent<Rigidbody>().useGravity = true;
+                ////düþme aniamsyonu falan ekle 
+                gameObject.transform.DOMoveY(-5f, 1f);
+                UiController.instance.OpenLosePanel();
+               // cb.enabled = false;
 
-            }
-            else if (gameObject.tag == "Player")
-            {
-                Debug.Log("player animasyonlarý yap");
             }
         }
         else if (other.CompareTag("finish"))
@@ -84,8 +99,10 @@ public class PlayerController : MonoBehaviour
         ghost.SetActive(false);
         player.SetActive(true);
         gameObject.tag = "Player";
-       
-	}
+        anim.SetBool("idle", true);
+
+
+    }
 
     /// <summary>
     /// taptostart butonuna týklanýnca (ya da oyun basi ilk dokunus) karakter kosmaya baslar, belki hizi ayarlanýr, animasyon scale rotate
@@ -95,5 +112,8 @@ public class PlayerController : MonoBehaviour
 	{
         GameManager.instance.levelScore = 0;
         GameManager.instance.isContinue = true;
+        PlayerMovement.instance.speed = 4f;
+        //anim.SetBool("idle", false);
+        anim.SetBool("run", true);
 	}
 }

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] private float speed = 1f;
+    public float speed = 1f;
 
     private void Update()
     {

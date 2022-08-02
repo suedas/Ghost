@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.9245283, g: 0.8059096, b: 0.8059096, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.016
@@ -1759,7 +1759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelPrefabs:
-  - {fileID: 2015472036643377866, guid: 46a8a0251870b3944a6af25f55d34fe8, type: 3}
+  - {fileID: 2015472036643377866, guid: 4785754d93dde9548bb1a3def59b4b49, type: 3}
   currentLevelNo: 0
   totalLevelNo: 0
   currentLevelObj: {fileID: 0}
@@ -2814,8 +2814,8 @@ Camera:
   m_GameObject: {fileID: 1654838904}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.40000007, g: 0.98039216, b: 0.9053301, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.9433962, g: 0.9112107, b: 0.6710573, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
