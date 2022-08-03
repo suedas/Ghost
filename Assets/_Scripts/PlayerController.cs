@@ -50,11 +50,14 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="ghost")
             {
                 //animasyon ekle 
+                GameManager.instance.IncreaseScore();
+
                 
             }
             else if (gameObject.tag=="Player")
             {//buraya girmiyor
                 anim.SetBool("run", false);
+                anim.SetBool("idle", true);
                 UiController.instance.OpenLosePanel();
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
             }
@@ -66,10 +69,9 @@ public class PlayerController : MonoBehaviour
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
                 ////düþme aniamsyonu falan ekle 
 
-               // anim.SetBool("run", false);
                 anim.SetBool("fall", true);
-                gameObject.transform.DOMove(new Vector3(transform.position.x,-10f,transform.position.z+4), 3f);
-
+                anim.SetBool("run", false);
+                gameObject.transform.DOMove(new Vector3(transform.position.x,-5f,transform.position.z+8), 1f);
                 UiController.instance.OpenLosePanel();
                // cb.enabled = false;
 
@@ -103,10 +105,9 @@ public class PlayerController : MonoBehaviour
         ghost.SetActive(false);
         player.SetActive(true);
         gameObject.tag = "Player";
-        anim.SetBool("deneme", true);
-        //anim.SetBool("idle", true);
-        //anim.SetBool("fall", false);
-        //anim.SetBool("run ", false);
+        anim.SetBool("idle", true);
+        anim.SetBool("fall", false);
+        anim.SetBool("run ", false);
 
 
     }
