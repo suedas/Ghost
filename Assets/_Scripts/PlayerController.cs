@@ -18,14 +18,19 @@ public class PlayerController : MonoBehaviour
     public GameObject ghost;
     public GameObject player;
     public CinemachineVirtualCamera cb;
-    
- 
+
+    public  SkinnedMeshRenderer skinnedMeshRenderer;
+    public Mesh skinnedMesh;
+    float blendOne = 0;
+    float blendTwo = 0;
+
     Animator anim;
     private void Start()
     {
         anim =player.GetComponent<Animator>();
         anim.SetBool("run", false);
-
+         
+      
         //anim.SetBool("idle", true);
     }
     private void OnTriggerEnter(Collider other)
@@ -36,6 +41,7 @@ public class PlayerController : MonoBehaviour
             gameObject.tag = "ghost";
             player.SetActive(false);
             Destroy(other.gameObject);
+         
         }
         else if (other.CompareTag("collectiblePlayer"))
         {
@@ -44,6 +50,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("run", true);
             ghost.SetActive(false);
             Destroy(other.gameObject);
+
         }
         else if (other.CompareTag("duvar"))
         {
@@ -62,6 +69,7 @@ public class PlayerController : MonoBehaviour
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
             }
         }
+      
         else if (other.CompareTag("bosluk"))
         {
             if (gameObject.tag=="Player")
@@ -75,6 +83,38 @@ public class PlayerController : MonoBehaviour
                 UiController.instance.OpenLosePanel();
                // cb.enabled = false;
 
+            }
+            else if (gameObject.tag=="ghost")
+            {
+                GameManager.instance.IncreaseScore();
+
+                Debug.Log("bbööööhhh");
+            }
+        }
+        else if (other.CompareTag("mazgal"))
+        {
+            if (gameObject.tag=="ghost")
+            {
+                StartCoroutine(huplet());
+                // hüpp animasyonu :))
+                GameManager.instance.isContinue = false;
+                PlayerMovement.instance.speed = 0;
+             
+            }
+            else if ( gameObject.tag=="Player")
+            {
+                GameManager.instance.IncreaseScore();
+            }
+        }
+        else if (other.CompareTag("hunter"))
+        {
+            if (gameObject.tag=="ghost")
+            {
+                UiController.instance.OpenLosePanel();
+            }
+            else if (gameObject.tag=="Player")
+            {
+                GameManager.instance.IncreaseScore();
             }
         }
         else if (other.CompareTag("finish"))
@@ -92,6 +132,40 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public IEnumerator huplet()
+    {
+
+        while (blendOne<100)
+        {
+
+            Debug.Log("huplet");
+                skinnedMeshRenderer.SetBlendShapeWeight(1, blendOne);
+                blendOne+=3;
+                if (blendOne >= 70)
+                {
+                    StartCoroutine(scale());
+                }
+
+            yield return new WaitForSeconds(.01f);
+        }
+    }
+    public IEnumerator scale()
+    {
+
+        while (blendTwo < 100)
+        {
+
+            skinnedMeshRenderer.SetBlendShapeWeight(2, blendTwo);
+            blendTwo+=3;
+
+          
+            yield return new WaitForSeconds(.01f);
+        }
+        yield return new WaitForSeconds(0.01f);
+        UiController.instance.OpenLosePanel();
+
+    }
+
     /// <summary>
     /// next level veya restart level butonuna tiklayinca karakter sifir konumuna tekrar alinir. (baslangic konumu)
     /// varsa animasyonu ayarlanýr. varsa scale rotation gibi degerleri sifirlanir.. varsa ekipman collectible v.s. gibi seyler temizlenir
@@ -99,6 +173,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void PreStartingEvents()
 	{
+
+        skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
+        skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
+        blendOne = 0;
+        blendTwo = 0;
         PlayerMovement.instance.transform.position = Vector3.zero;
         PlayerController.instance.transform.position = Vector3.zero;
         GameManager.instance.isContinue = false;
@@ -118,6 +197,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void PostStartingEvents()
 	{
+        skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
+        skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
+
         GameManager.instance.levelScore = 0;
         GameManager.instance.isContinue = true;
         PlayerMovement.instance.speed = 4f;
