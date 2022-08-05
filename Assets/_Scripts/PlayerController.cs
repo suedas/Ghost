@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
+using FIMSpace.FTail;
+
 
 
 public class PlayerController : MonoBehaviour
@@ -27,9 +29,9 @@ public class PlayerController : MonoBehaviour
     public GameObject circleP;
     public GameObject boomP;
     public GameObject starP;
-    public GameObject fýck;
-    
-   
+    public GameObject fýckP;
+  
+
 
     Animator anim;
     public  Animator idleGhost;
@@ -83,6 +85,25 @@ public class PlayerController : MonoBehaviour
                 UiController.instance.OpenLosePanel();
             }
         }
+        else if (other.CompareTag("basamak"))
+        {
+            if (gameObject.tag=="ghost")
+            {
+                //animasyon ekle 
+                GameManager.instance.IncreaseScore();
+
+                
+            }
+            else if (gameObject.tag=="Player")
+            {//buraya girmiyor
+                other.gameObject.GetComponent<Collider>().isTrigger = false;
+                anim.SetBool("run", false);
+                anim.SetBool("sad", true);
+                //anim.SetBool("idle", true);
+                starP.SetActive(true);
+                UiController.instance.OpenLosePanel();
+            }
+        }
       
         else if (other.CompareTag("bosluk"))
         {
@@ -105,6 +126,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("bbööööhhh");
             }
         }
+        
         else if (other.CompareTag("mazgal"))
         {
             if (gameObject.tag=="ghost")
@@ -136,6 +158,20 @@ public class PlayerController : MonoBehaviour
                 GameManager.instance.IncreaseScore();
             }
         }
+        else if (other.CompareTag("fan"))
+        {
+            if (gameObject.tag=="ghost")
+            {
+                GameManager.instance.isContinue = false;
+                gameObject.transform.DOMoveY(9, 2);
+                UiController.instance.OpenLosePanel();
+               
+            }
+            else if (gameObject.tag=="Player")
+            {
+                GameManager.instance.IncreaseScore();
+            }
+        }
         else if (other.CompareTag("finish"))
         {
             // oyun sonu olaylari... animasyon.. score.. panel acip kapatmak
@@ -144,10 +180,18 @@ public class PlayerController : MonoBehaviour
             // ornek olarak asagidaki kodda score 10 dan buyukse kazan degilse kaybet dedik ancak
             // bazý oyunlarda farkli parametlere göre kontrol etmek veya oyun sonunda karakterin yola devam etmesi gibi
             // durumlarda developer burayý kendisi duzenlemelidir.
+            if (gameObject.tag == "Player")
+            {
+                //transform.Rotate(0, -180, 0);     
+                anim.SetBool("run", false);
+                anim.SetBool("dance", true);
+            }
+
             GameManager.instance.isContinue = false;
             Debug.Log(GameManager.instance.levelScore);
             if (GameManager.instance.levelScore > 10) UiController.instance.OpenWinPanel();
             else UiController.instance.OpenLosePanel();
+
         }
     }
     public IEnumerator delay()
@@ -187,7 +231,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(.01f);
         }
         yield return new WaitForSeconds(0.01f);
-        fýck.SetActive(true);
+        fýckP.SetActive(true);
         UiController.instance.OpenLosePanel();
 
     }
@@ -199,7 +243,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void PreStartingEvents()
 	{
-
+        //transform.Rotate(0, 180, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
         blendOne = 0;
@@ -213,10 +257,12 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("idle", true);
         anim.SetBool("fall", false);
         anim.SetBool("run ", false);
+        anim.SetBool("dance", false);
+        anim.SetBool("sad", false);
         circleP.SetActive(false);
         boomP.SetActive(false);
         starP.SetActive(false);
-        fýck.SetActive(false);
+        fýckP.SetActive(false);
 
 
 
