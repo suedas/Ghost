@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
 
+
 public class PlayerController : MonoBehaviour
 {
     #region Singleton
@@ -23,25 +24,36 @@ public class PlayerController : MonoBehaviour
     public Mesh skinnedMesh;
     float blendOne = 0;
     float blendTwo = 0;
+    public GameObject circleP;
+    public GameObject boomP;
+    public GameObject starP;
+    public GameObject fýck;
+    
+   
 
     Animator anim;
+    public  Animator idleGhost;
     private void Start()
     {
         anim =player.GetComponent<Animator>();
         anim.SetBool("run", false);
-         
-      
+
+        idleGhost.enabled = true;
+
+
+
         //anim.SetBool("idle", true);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("collectibleGhost"))
         {
+           
             ghost.SetActive(true);
             gameObject.tag = "ghost";
             player.SetActive(false);
             Destroy(other.gameObject);
-         
+
         }
         else if (other.CompareTag("collectiblePlayer"))
         {
@@ -63,10 +75,12 @@ public class PlayerController : MonoBehaviour
             }
             else if (gameObject.tag=="Player")
             {//buraya girmiyor
-                anim.SetBool("run", false);
-                anim.SetBool("idle", true);
-                UiController.instance.OpenLosePanel();
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
+                anim.SetBool("run", false);
+                anim.SetBool("sad", true);
+                //anim.SetBool("idle", true);
+                starP.SetActive(true);
+                UiController.instance.OpenLosePanel();
             }
         }
       
@@ -95,6 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="ghost")
             {
+                idleGhost.enabled = false;
+                skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
@@ -110,7 +126,10 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="ghost")
             {
-                UiController.instance.OpenLosePanel();
+                GameManager.instance.isContinue = false;
+                circleP.SetActive(true);
+                boomP.SetActive(true);
+                StartCoroutine(delay());
             }
             else if (gameObject.tag=="Player")
             {
@@ -130,6 +149,12 @@ public class PlayerController : MonoBehaviour
             if (GameManager.instance.levelScore > 10) UiController.instance.OpenWinPanel();
             else UiController.instance.OpenLosePanel();
         }
+    }
+    public IEnumerator delay()
+    {
+        yield return new WaitForSeconds(1f);
+        ghost.SetActive(false);
+        UiController.instance.OpenLosePanel();
     }
 
     public IEnumerator huplet()
@@ -162,6 +187,7 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(.01f);
         }
         yield return new WaitForSeconds(0.01f);
+        fýck.SetActive(true);
         UiController.instance.OpenLosePanel();
 
     }
@@ -187,6 +213,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("idle", true);
         anim.SetBool("fall", false);
         anim.SetBool("run ", false);
+        circleP.SetActive(false);
+        boomP.SetActive(false);
+        starP.SetActive(false);
+        fýck.SetActive(false);
+
 
 
     }

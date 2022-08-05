@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5315131504716459146}
   - component: {fileID: 9109929255165469487}
   - component: {fileID: 6451423156266817509}
+  - component: {fileID: 1353472945658593690}
   m_Layer: 0
   m_Name: duvar
-  m_TagString: Untagged
+  m_TagString: duvar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4794349387376293424}
-  m_LocalRotation: {x: -0.6969389, y: -0.0010335353, z: -0.009921299, w: 0.71706116}
+  m_LocalRotation: {x: -0.6969361, y: -0.0010275395, z: -0.009917797, w: 0.71706396}
   m_LocalPosition: {x: 3.7079504, y: -3.266623, z: -8.599636}
-  m_LocalScale: {x: 1.0001324, y: 0.8326585, z: 1.0004593}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -88.217, y: 23.387, z: -24.274}
 --- !u!33 &9109929255165469487
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -109,3 +110,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1353472945658593690
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4794349387376293424}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.8491178, y: 17.07622, z: 11.646918}
+  m_Center: {x: 1.2947671, y: -7.217442, z: 3.007979}
