@@ -20,6 +20,18 @@ TagManager:
   - fan
   - basamak
   - end
+  - 1x
+  - 2x
+  - 3x
+  - 4x
+  - 5x
+  - 6x
+  - 7x
+  - 8x
+  - 9x
+  - 10x
+  - oyunsonubasamak
+  - oyunsonumazgal
   layers:
   - Default
   - TransparentFX

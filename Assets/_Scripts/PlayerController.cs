@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject circleP;
     public GameObject boomP;
     public GameObject starP;
-    public GameObject fýckP;
+    public GameObject fýckP,ruzgar;
     public Animator anim;
     public  Animator idleGhost;
     public int count;
@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour
             // durumlarda developer burayý kendisi duzenlemelidir.
 
             PlayerMovement.instance.speed = 8f;
+            ruzgar.SetActive(true);
             //if (gameObject.tag == "Player")
             //{
             //    transform.Rotate(0, -180, 0);     
@@ -315,7 +316,7 @@ public class PlayerController : MonoBehaviour
     public void PreStartingEvents()
 	{
         //transform.Rotate(0, 180, 0);
-        PlayerMovement.instance.speed = 4f;
+        PlayerMovement.instance.speed = 6f;
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
         blendOne = 0;
@@ -335,6 +336,7 @@ public class PlayerController : MonoBehaviour
         boomP.SetActive(false);
         starP.SetActive(false);
         fýckP.SetActive(false);
+        ruzgar.SetActive(false);
         chest.instance.confetiP.SetActive(false);
         chest.instance.magicP.SetActive(false);
         chest.instance.dolarP.SetActive(false);
@@ -356,7 +358,7 @@ public class PlayerController : MonoBehaviour
 
         GameManager.instance.levelScore = 0;
         GameManager.instance.isContinue = true;
-        PlayerMovement.instance.speed = 4f;
+        PlayerMovement.instance.speed = 6f;
         //anim.SetBool("idle", false);
         anim.SetBool("run", true);
 	}

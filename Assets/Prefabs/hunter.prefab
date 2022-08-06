@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1626166185458434875}
   - component: {fileID: 3563960075335792625}
   - component: {fileID: 8548675291294198677}
+  - component: {fileID: 4581851648044367328}
   m_Layer: 0
   m_Name: hunter
   m_TagString: hunter
@@ -107,6 +108,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1586738, y: 11.935757, z: 6.423749}
   m_Center: {x: -0.25736, y: -4.1547747, z: 3.2267077}
+--- !u!95 &4581851648044367328
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3059429305785243172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3131aca059af12429397ac936e2a9b8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &7578128494101972589
 PrefabInstance:
   m_ObjectHideFlags: 0
