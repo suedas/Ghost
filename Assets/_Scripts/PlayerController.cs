@@ -30,12 +30,9 @@ public class PlayerController : MonoBehaviour
     public GameObject boomP;
     public GameObject starP;
     public GameObject fýckP;
-  
-  
-
-
     public Animator anim;
     public  Animator idleGhost;
+    public int count;
     private void Start()
     {
         anim =player.GetComponent<Animator>();
@@ -135,6 +132,7 @@ public class PlayerController : MonoBehaviour
                 idleGhost.enabled = false;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
+                UiController.instance.OpenLosePanel();
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
                 PlayerMovement.instance.speed = 0;
@@ -189,15 +187,82 @@ public class PlayerController : MonoBehaviour
             //    anim.SetBool("run", false);
             //    anim.SetBool("dance", true);
             //}
-
             
         }
-        else if (other.CompareTag("end"))
+        else if (other.CompareTag("1x"))
         {
-            // transform.Rotate(0, -180, 0);
-           
+            count++;
+        } else if (other.CompareTag("2x"))
+        {
+            count++;
 
         }
+        else if (other.CompareTag("3x"))
+        {
+            count++;
+
+        }
+        else if (other.CompareTag("4x"))
+        {
+            count++;
+
+        }
+        else if (other.CompareTag("5x"))
+        {
+            count++;
+
+        }
+        else if (other.CompareTag("6x"))
+        {
+            count++;
+
+        }
+        else if (other.CompareTag("7x"))
+        {
+            count++;
+
+        }
+        else if (other.CompareTag("8x"))
+        {
+            count++;
+        } else if (other.CompareTag("9x"))
+        {
+            count++;
+        } else if (other.CompareTag("10x"))
+        {
+            count++;
+        }
+        else if (other.CompareTag("oyunsonubasamak"))
+        {
+            if (gameObject.tag=="Player")
+            {
+                other.gameObject.GetComponent<Collider>().isTrigger = false;
+                anim.SetBool("run", false);
+                anim.SetBool("sad", true);
+                //anim.SetBool("idle", true);
+                starP.SetActive(true);
+                GameManager.instance.isContinue = false;
+                PlayerMovement.instance.speed = 0;
+                UiController.instance.OpenWinPanel();
+                GameManager.instance.oyunsonu();
+            }
+        }
+        else if (other.CompareTag("oyunsonumazgal"))
+        {
+            if (gameObject.tag == "ghost")
+            {
+                Debug.Log("oyunsonumazgal");
+                idleGhost.enabled = false;
+                skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
+                StartCoroutine(huplet());
+                // hüpp animasyonu :))
+                GameManager.instance.isContinue = false;
+                PlayerMovement.instance.speed = 0;
+                UiController.instance.OpenWinPanel();
+                GameManager.instance.oyunsonu();
+            }
+        }
+
     }
    
     public IEnumerator delay()
@@ -238,7 +303,7 @@ public class PlayerController : MonoBehaviour
         }
         yield return new WaitForSeconds(0.01f);
         fýckP.SetActive(true);
-        UiController.instance.OpenLosePanel();
+        //UiController.instance.OpenLosePanel();
 
     }
 

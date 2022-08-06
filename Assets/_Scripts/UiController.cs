@@ -20,7 +20,7 @@ public class UiController : MonoBehaviour
 
 	private void Start()
 	{
-		
+		//PlayerPrefs.DeleteAll();
 		gamePanel.SetActive(true);
 		tapToStartPanel.SetActive(true);
 		winPanel.SetActive(false);
@@ -60,7 +60,7 @@ public class UiController : MonoBehaviour
 		{
 			while (tempScore < GameManager.instance.score)
 			{
-				tempScore+=10;
+				tempScore++;
 				scoreText.text = tempScore.ToString();
 				yield return new WaitForSeconds(.05f);
 			}
@@ -69,7 +69,7 @@ public class UiController : MonoBehaviour
 		{
 			while (tempScore > GameManager.instance.score)
 			{
-				tempScore-=10;
+				tempScore--;
 				scoreText.text = tempScore.ToString();
 				yield return new WaitForSeconds(.05f);
 			}
@@ -84,6 +84,7 @@ public class UiController : MonoBehaviour
 	public void OpenWinPanel()
 	{
 		winPanel.SetActive(true);
+
 	}
 
 

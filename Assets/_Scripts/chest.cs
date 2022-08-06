@@ -40,9 +40,11 @@ public class chest : MonoBehaviour
     public IEnumerator chestDelay()
     {
         yield return new WaitForSeconds(2f);
-        Debug.Log(GameManager.instance.levelScore);
-        if (GameManager.instance.levelScore > 10) UiController.instance.OpenWinPanel();
-        else UiController.instance.OpenLosePanel();
+        GameManager.instance.oyunsonu();
+        UiController.instance.OpenWinPanel();
+        //Debug.Log(GameManager.instance.levelScore);
+        //if (GameManager.instance.levelScore > 10) UiController.instance.OpenWinPanel();
+        //else UiController.instance.OpenLosePanel();
     }
 }
 

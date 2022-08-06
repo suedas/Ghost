@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 	{
 		//isContinue = true;
 		score = PlayerPrefs.GetInt("score");
+		//PlayerPrefs.DeleteAll();
 	}
 
 
@@ -36,6 +37,20 @@ public class GameManager : MonoBehaviour
 		levelScore += scoreArtisMiktari;
 		PlayerPrefs.SetInt("score", score);
 		UiController.instance.SetScoreText();
+	}
+	public void oyunsonu()
+    {
+        if (PlayerController.instance.count>0)
+        {
+			int count = PlayerController.instance.count;
+			Debug.Log("count"+count);
+			Debug.Log("score"+score);
+			score = score * count;
+			levelScore = score * PlayerController.instance.count;
+			PlayerPrefs.SetInt("score", score);
+			UiController.instance.SetScoreText();
+
+        }
 	}
 
 

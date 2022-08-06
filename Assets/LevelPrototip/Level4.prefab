@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 975964306935320890}
   m_Layer: 0
   m_Name: 10X
-  m_TagString: Untagged
+  m_TagString: 10x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 7604129602017044538}
   m_Layer: 0
   m_Name: 9X
-  m_TagString: Untagged
+  m_TagString: 9x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 1716545296297585432}
   m_Layer: 0
   m_Name: 6X
-  m_TagString: Untagged
+  m_TagString: 6x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 9032623778985161546}
   m_Layer: 0
   m_Name: 2X
-  m_TagString: Untagged
+  m_TagString: 2x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1606,7 +1606,7 @@ GameObject:
   - component: {fileID: 2081745105872576307}
   m_Layer: 0
   m_Name: 4X
-  m_TagString: Untagged
+  m_TagString: 4x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1707,7 +1707,7 @@ GameObject:
   - component: {fileID: 538682893351565229}
   m_Layer: 0
   m_Name: 1x
-  m_TagString: Untagged
+  m_TagString: 1x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1808,7 +1808,7 @@ GameObject:
   - component: {fileID: 46435527865976075}
   m_Layer: 0
   m_Name: 8X
-  m_TagString: Untagged
+  m_TagString: 8x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2089,7 +2089,7 @@ GameObject:
   - component: {fileID: 1599046427087281788}
   m_Layer: 0
   m_Name: 7X
-  m_TagString: Untagged
+  m_TagString: 7x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3133,7 +3133,7 @@ GameObject:
   - component: {fileID: 6931810027443416358}
   m_Layer: 0
   m_Name: 3X
-  m_TagString: Untagged
+  m_TagString: 3x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3406,7 +3406,7 @@ GameObject:
   - component: {fileID: 4793658677907002844}
   m_Layer: 0
   m_Name: 5X
-  m_TagString: Untagged
+  m_TagString: 5x
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4057,6 +4057,10 @@ PrefabInstance:
     - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
       propertyPath: m_Name
       value: mazgal (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonumazgal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
@@ -5112,6 +5116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basamak
       objectReference: {fileID: 0}
+    - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonubasamak
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
 --- !u!4 &4047546752160528489 stripped
@@ -5680,6 +5688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basamak (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonubasamak
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
 --- !u!4 &806189957007939683 stripped
@@ -5815,6 +5827,10 @@ PrefabInstance:
     - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
       propertyPath: m_Name
       value: mazgal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonumazgal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
@@ -6900,6 +6916,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mazgal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonumazgal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
 --- !u!4 &2471681967827154373 stripped
@@ -7048,6 +7068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basamak (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonubasamak
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
 --- !u!4 &7340521652200977017 stripped
@@ -7117,6 +7141,10 @@ PrefabInstance:
     - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
       propertyPath: m_Name
       value: mazgal (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonumazgal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
@@ -7249,6 +7277,10 @@ PrefabInstance:
     - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
       propertyPath: m_Name
       value: mazgal (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonumazgal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
@@ -8284,6 +8316,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basamak (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonubasamak
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
 --- !u!4 &9114403760666499364 stripped
@@ -8528,6 +8564,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5409651191547200249}
     m_Modifications:
+    - target: {fileID: 5026099142290865225, guid: 11d68b0078653be48b261768588d5545, type: 3}
+      propertyPath: m_Size.x
+      value: 5.992703
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026099142290865225, guid: 11d68b0078653be48b261768588d5545, type: 3}
+      propertyPath: m_Size.z
+      value: 21.185112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026099142290865225, guid: 11d68b0078653be48b261768588d5545, type: 3}
+      propertyPath: m_Center.z
+      value: -0.20594901
+      objectReference: {fileID: 0}
     - target: {fileID: 6127935061548862854, guid: 11d68b0078653be48b261768588d5545, type: 3}
       propertyPath: m_Name
       value: chest
@@ -8723,6 +8771,10 @@ PrefabInstance:
     - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
       propertyPath: m_Name
       value: basamak (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2987235082179481539, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
+      propertyPath: m_TagString
+      value: oyunsonubasamak
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aa7adca8d724e64a8a202b1a168f61c, type: 3}
