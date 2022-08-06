@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("collectibleGhost"))
         {
-           
+            GameManager.instance.IncreaseScore();
             ghost.SetActive(true);
             gameObject.tag = "ghost";
             player.SetActive(false);
@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("collectiblePlayer"))
         {
+            GameManager.instance.IncreaseScore();
             player.SetActive(true);
             gameObject.tag = "Player";
             anim.SetBool("run", true);
@@ -66,14 +67,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("duvar"))
         {
-            if (gameObject.tag=="ghost")
-            {
-                //animasyon ekle 
-                GameManager.instance.IncreaseScore();
-
-                
-            }
-            else if (gameObject.tag=="Player")
+           
+            if (gameObject.tag=="Player")
             {//buraya girmiyor
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
                 anim.SetBool("run", false);
@@ -85,14 +80,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("basamak"))
         {
-            if (gameObject.tag=="ghost")
-            {
-                //animasyon ekle 
-                GameManager.instance.IncreaseScore();
-
-                
-            }
-            else if (gameObject.tag=="Player")
+            
+            if (gameObject.tag=="Player")
             {//buraya girmiyor
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
                 anim.SetBool("run", false);
@@ -117,12 +106,7 @@ public class PlayerController : MonoBehaviour
                // cb.enabled = false;
 
             }
-            else if (gameObject.tag=="ghost")
-            {
-                GameManager.instance.IncreaseScore();
-
-                Debug.Log("bbööööhhh");
-            }
+         
         }
         
         else if (other.CompareTag("mazgal"))
@@ -138,10 +122,7 @@ public class PlayerController : MonoBehaviour
                 PlayerMovement.instance.speed = 0;
              
             }
-            else if ( gameObject.tag=="Player")
-            {
-                GameManager.instance.IncreaseScore();
-            }
+          
         }
         else if (other.CompareTag("hunter"))
         {
@@ -152,10 +133,7 @@ public class PlayerController : MonoBehaviour
                 boomP.SetActive(true);
                 StartCoroutine(delay());
             }
-            else if (gameObject.tag=="Player")
-            {
-                GameManager.instance.IncreaseScore();
-            }
+           
         }
         else if (other.CompareTag("fan"))
         {
@@ -166,10 +144,7 @@ public class PlayerController : MonoBehaviour
                 UiController.instance.OpenLosePanel();
                
             }
-            else if (gameObject.tag=="Player")
-            {
-                GameManager.instance.IncreaseScore();
-            }
+            
         }
         else if (other.CompareTag("finish"))
         {
