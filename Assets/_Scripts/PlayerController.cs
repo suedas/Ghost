@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
             // bazý oyunlarda farkli parametlere göre kontrol etmek veya oyun sonunda karakterin yola devam etmesi gibi
             // durumlarda developer burayý kendisi duzenlemelidir.
 
-            PlayerMovement.instance.speed = 8f;
+            PlayerMovement.instance.speed = 10f;
             ruzgar.SetActive(true);
             //if (gameObject.tag == "Player")
             //{
