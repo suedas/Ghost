@@ -19,6 +19,7 @@ TagManager:
   - hunter
   - fan
   - basamak
+  - end
   layers:
   - Default
   - TransparentFX

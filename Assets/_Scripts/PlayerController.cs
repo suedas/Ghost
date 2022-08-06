@@ -31,9 +31,10 @@ public class PlayerController : MonoBehaviour
     public GameObject starP;
     public GameObject fýckP;
   
+  
 
 
-    Animator anim;
+    public Animator anim;
     public  Animator idleGhost;
     private void Start()
     {
@@ -180,20 +181,25 @@ public class PlayerController : MonoBehaviour
             // ornek olarak asagidaki kodda score 10 dan buyukse kazan degilse kaybet dedik ancak
             // bazý oyunlarda farkli parametlere göre kontrol etmek veya oyun sonunda karakterin yola devam etmesi gibi
             // durumlarda developer burayý kendisi duzenlemelidir.
-            if (gameObject.tag == "Player")
-            {
-                //transform.Rotate(0, -180, 0);     
-                anim.SetBool("run", false);
-                anim.SetBool("dance", true);
-            }
 
-            GameManager.instance.isContinue = false;
-            Debug.Log(GameManager.instance.levelScore);
-            if (GameManager.instance.levelScore > 10) UiController.instance.OpenWinPanel();
-            else UiController.instance.OpenLosePanel();
+            PlayerMovement.instance.speed = 8f;
+            //if (gameObject.tag == "Player")
+            //{
+            //    transform.Rotate(0, -180, 0);     
+            //    anim.SetBool("run", false);
+            //    anim.SetBool("dance", true);
+            //}
+
+            
+        }
+        else if (other.CompareTag("end"))
+        {
+            // transform.Rotate(0, -180, 0);
+           
 
         }
     }
+   
     public IEnumerator delay()
     {
         yield return new WaitForSeconds(1f);
@@ -244,6 +250,7 @@ public class PlayerController : MonoBehaviour
     public void PreStartingEvents()
 	{
         //transform.Rotate(0, 180, 0);
+        PlayerMovement.instance.speed = 4f;
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
         blendOne = 0;
@@ -263,6 +270,11 @@ public class PlayerController : MonoBehaviour
         boomP.SetActive(false);
         starP.SetActive(false);
         fýckP.SetActive(false);
+        chest.instance.confetiP.SetActive(false);
+        chest.instance.magicP.SetActive(false);
+        chest.instance.dolarP.SetActive(false);
+        chest.instance.chestAnim.enabled = false;
+
 
 
 
