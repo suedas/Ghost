@@ -33,8 +33,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public  Animator idleGhost;
     public int count;
-    public GameObject coin;
-    public Transform target;
+   
     private void Start()
     {
         anim =player.GetComponent<Animator>();
@@ -51,8 +50,6 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("collectibleGhost"))
         {
             GameManager.instance.IncreaseScore();
-            GameObject ss = Instantiate(coin, new Vector3(other.gameObject.transform.position.x, other.gameObject.transform.position.y, other.gameObject.transform.position.z), Quaternion.identity);
-            ss.transform.DOMove(new Vector3(target.transform.position.x,target.transform.position.y,target.transform.position.z), 2f);
             ghost.SetActive(true);
             gameObject.tag = "ghost";
             player.SetActive(false);
@@ -102,7 +99,6 @@ public class PlayerController : MonoBehaviour
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
                 ////düþme aniamsyonu falan ekle 
-
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
                 gameObject.transform.DOMove(new Vector3(transform.position.x,-5f,transform.position.z+8), 1f);
