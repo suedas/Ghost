@@ -6,7 +6,6 @@ using DG.Tweening;
 using FIMSpace.FTail;
 
 
-
 public class PlayerController : MonoBehaviour
 {
     #region Singleton
@@ -33,16 +32,21 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public  Animator idleGhost;
     public int count;
+    //public TailAnimator2 sagTail, solTail;
    
     private void Start()
     {
+        
         anim =player.GetComponent<Animator>();
         anim.SetBool("run", false);
 
-        idleGhost.enabled = true;
-
-
-
+     
+        
+        chest.instance.confetiP.SetActive(false);
+        chest.instance.magicP.SetActive(false);
+        chest.instance.dolarP.SetActive(false);
+        chest.instance.chestAnim.enabled = false;
+        
         //anim.SetBool("idle", true);
     }
     private void OnTriggerEnter(Collider other)
@@ -53,7 +57,8 @@ public class PlayerController : MonoBehaviour
             ghost.SetActive(true);
             gameObject.tag = "ghost";
             player.SetActive(false);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+           // Destroy(other.gameObject);
 
         }
         else if (other.CompareTag("collectiblePlayer"))
@@ -63,7 +68,9 @@ public class PlayerController : MonoBehaviour
             gameObject.tag = "Player";
             anim.SetBool("run", true);
             ghost.SetActive(false);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
+
+           //Destroy(other.gameObject);
 
         }
         else if (other.CompareTag("duvar"))
@@ -114,13 +121,16 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="ghost")
             {
                 idleGhost.enabled = false;
+                TailController.instance.sagTail.TailAnimatorAmount = 100;
+                TailController.instance.solTail.TailAnimatorAmount = 100;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
+                gameObject.transform.DOMoveY(-1, .2f);
                 UiController.instance.OpenLosePanel();
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
                 PlayerMovement.instance.speed = 0;
-             
+              
             }
           
         }
@@ -264,6 +274,9 @@ public class PlayerController : MonoBehaviour
 
             yield return new WaitForSeconds(.01f);
         }
+        idleGhost.enabled = true;
+        TailController.instance.sagTail.TailAnimatorAmount = 0;
+        TailController.instance.solTail.TailAnimatorAmount = 0;
     }
     public IEnumerator scale()
     {
@@ -312,10 +325,15 @@ public class PlayerController : MonoBehaviour
         starP.SetActive(false);
         fýckP.SetActive(false);
         ruzgar.SetActive(false);
-        chest.instance.confetiP.SetActive(false);
-        chest.instance.magicP.SetActive(false);
-        chest.instance.dolarP.SetActive(false);
-        chest.instance.chestAnim.enabled = false;
+       
+        //if (chest.instance.chestAnim.enabled ==true)
+        //{
+        //    chest.instance.confetiP.SetActive(false);
+        //    chest.instance.magicP.SetActive(false);
+        //    chest.instance.dolarP.SetActive(false);
+        //    chest.instance.chestAnim.enabled = false;
+
+        //}
 
 
 
