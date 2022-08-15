@@ -14,7 +14,18 @@ public class SwerveMovement : MonoBehaviour
     private float deltaPos;
     private float lastMousePosX;
     private float lastPositonChange;
+    public bool isHuman;
+    private float lastMousePosY, firstMousePosY;
+    [SerializeField] private float swipeDistance = 20;
 
+    #region Singleton
+    public static SwerveMovement instance;
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
+    #endregion
     private void Update()
     {
        
@@ -28,15 +39,32 @@ public class SwerveMovement : MonoBehaviour
                 }
             
                 lastMousePosX = Input.mousePosition.x;
-            }
+                lastMousePosY = Input.mousePosition.y;
+                firstMousePosY = Input.mousePosition.y;
+             }
             else if (Input.GetMouseButton(0))
             {
                 deltaPos = Input.mousePosition.x - lastMousePosX;
                 lastMousePosX = Input.mousePosition.x;
-            }
+                 lastMousePosY = Input.mousePosition.y;
+                if (lastMousePosY - firstMousePosY > swipeDistance && !isHuman) // yukari
+                {
+                    firstMousePosY = lastMousePosY;
+                    PlayerController.instance.Human();
+                    Debug.Log("insan yap");
+                }
+                else if (firstMousePosY - lastMousePosY > swipeDistance && isHuman) // asagi
+                {
+                    firstMousePosY = lastMousePosY;
+                    PlayerController.instance.Ghost();
+                    Debug.Log("hayalet yap");
+                }
+
+             }
             else if (Input.GetMouseButtonUp(0))
             {
                 deltaPos = 0;
+                firstMousePosY = lastMousePosY;
             }
 
             var swerve = Time.deltaTime * swerveSpeed * deltaPos;

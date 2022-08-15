@@ -49,29 +49,52 @@ public class PlayerController : MonoBehaviour
         
         //anim.SetBool("idle", true);
     }
+    public void Ghost()
+    {
+        SwerveMovement.instance.isHuman = false;
+        ghost.SetActive(true);
+        gameObject.tag = "ghost";
+        player.SetActive(false);
+    }
+    public void Human()
+    {
+        SwerveMovement.instance.isHuman = true;
+        player.SetActive(true);
+        gameObject.tag = "Player";
+        anim.SetBool("run", true);
+        ghost.SetActive(false);
+    
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("collectibleGhost"))
         {
-            GameManager.instance.IncreaseScore();
-            ghost.SetActive(true);
-            gameObject.tag = "ghost";
-            player.SetActive(false);
-            other.gameObject.SetActive(false);
+            //GameManager.instance.IncreaseScore();
+            //ghost.SetActive(true);
+            //gameObject.tag = "ghost";
+            //player.SetActive(false);
+            //other.gameObject.SetActive(false);
            // Destroy(other.gameObject);
 
         }
         else if (other.CompareTag("collectiblePlayer"))
         {
-            GameManager.instance.IncreaseScore();
-            player.SetActive(true);
-            gameObject.tag = "Player";
-            anim.SetBool("run", true);
-            ghost.SetActive(false);
-            other.gameObject.SetActive(false);
+           // GameManager.instance.IncreaseScore();
+            //player.SetActive(true);
+            //gameObject.tag = "Player";
+            //anim.SetBool("run", true);
+            //ghost.SetActive(false);
+            //other.gameObject.SetActive(false);
 
            //Destroy(other.gameObject);
 
+        }
+        else if (other.CompareTag("diamond"))
+        {
+            if (gameObject.tag=="Player")
+            {
+                other.gameObject.SetActive(false);
+            }
         }
         else if (other.CompareTag("duvar"))
         {

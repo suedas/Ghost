@@ -32,6 +32,7 @@ TagManager:
   - 10x
   - oyunsonubasamak
   - oyunsonumazgal
+  - diamond
   layers:
   - Default
   - TransparentFX
