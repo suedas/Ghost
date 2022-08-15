@@ -62,9 +62,12 @@ public class UiController : MonoBehaviour
 			{
 				tempScore++;
 				scoreText.text = tempScore.ToString();
+				scoreText.fontSize = 48;
 				yield return new WaitForSeconds(.05f);
 			}
+			scoreText.fontSize = 39;
 		}
+		
 		else if(tempScore > GameManager.instance.score)
 		{
 			while (tempScore > GameManager.instance.score)

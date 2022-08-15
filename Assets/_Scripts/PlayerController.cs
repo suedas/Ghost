@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public  Animator idleGhost;
     public int count;
+    public Transform diamondTarget;
     //public TailAnimator2 sagTail, solTail;
    
     private void Start()
@@ -93,7 +94,9 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
-                other.gameObject.SetActive(false);
+                other.gameObject.transform.DOMove(diamondTarget.transform.position, .5f).OnComplete(()=> { other.gameObject.SetActive(false); });
+                other.gameObject.transform.DOScale(.2f, .2f);
+                GameManager.instance.IncreaseScore();
             }
         }
         else if (other.CompareTag("duvar"))
