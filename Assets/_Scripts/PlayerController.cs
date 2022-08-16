@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="Player")
             {//buraya girmiyor
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
+                gameObject.transform.DOMoveZ(gameObject.transform.position.z - 3f, 2f);
                 anim.SetBool("run", false);
                 anim.SetBool("sad", true);
                 //anim.SetBool("idle", true);
@@ -117,12 +118,8 @@ public class PlayerController : MonoBehaviour
             
             if (gameObject.tag=="Player")
             {//buraya girmiyor
-                other.gameObject.GetComponent<Collider>().isTrigger = false;
-                anim.SetBool("run", false);
-                anim.SetBool("sad", true);
-                //anim.SetBool("idle", true);
-                starP.SetActive(true);
-                UiController.instance.OpenLosePanel();
+                StartCoroutine(stickmanAim(other.gameObject));
+           
             }
         }
       
@@ -131,11 +128,11 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="Player")
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
-                ////düþme aniamsyonu falan ekle 
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
-                gameObject.transform.DOMove(new Vector3(transform.position.x,-5f,transform.position.z+8), 1f);
+                gameObject.transform.DOMove(new Vector3(transform.position.x, -5f, transform.position.z + 8), 1f);
                 UiController.instance.OpenLosePanel();
+               
                // cb.enabled = false;
 
             }
@@ -147,8 +144,8 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="ghost")
             {
                 idleGhost.enabled = false;
-                TailController.instance.sagTail.TailAnimatorAmount = 100;
-                TailController.instance.solTail.TailAnimatorAmount = 100;
+                TailController.instance.sagTail.TailAnimatorAmount = 1.3f;
+                TailController.instance.solTail.TailAnimatorAmount = 1.3f;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
                 gameObject.transform.DOMoveY(-1, .2f);
@@ -275,6 +272,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+    public IEnumerator stickmanAim(GameObject other)
+    {
+        other.gameObject.GetComponent<Collider>().isTrigger = false;
+        gameObject.transform.DOMoveZ(gameObject.transform.position.z - 2f, .5f);
+        anim.SetBool("run", false);
+        anim.SetBool("sad", true);
+        //anim.SetBool("idle", true);
+        starP.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        UiController.instance.OpenLosePanel();
     }
    
     public IEnumerator delay()
