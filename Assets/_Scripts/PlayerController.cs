@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
             {
                 SwerveMovement.instance.isSwerve = false;
                 GameManager.instance.isContinue = false;
-                gameObject.transform.DOMoveY(9, 2);
+                gameObject.transform.DOMoveY(9, 1).SetEase(Ease.Linear);
                 UiController.instance.OpenLosePanel();
                
             }
@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
+                SwerveMovement.instance.isSwerve = false;
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
                 gameObject.transform.DOMoveZ(gameObject.transform.position.z - 2f, .5f);
 
@@ -271,6 +272,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag == "ghost")
             {
+                SwerveMovement.instance.isSwerve = false;
                 Debug.Log("oyunsonumazgal");
                 idleGhost.enabled = false;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);

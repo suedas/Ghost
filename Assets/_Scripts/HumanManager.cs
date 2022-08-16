@@ -108,10 +108,10 @@ public class HumanManager : MonoBehaviour
         for (int i = 0; i < child; i++)
         {
             
+            yield return new WaitForSeconds(.02f);
             gh.transform.GetChild(i).GetComponent<Animator>().SetBool("escape", true);
             gh.transform.GetChild(i).Rotate(0, 180, 0);
             
-            yield return new WaitForSeconds(.02f);
           
             if (gh.transform.GetChild(i).position.x >= 0)
             {
@@ -130,7 +130,7 @@ public class HumanManager : MonoBehaviour
                 //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
             }
         }
-        //yield return new WaitForSeconds(1f);
+       // yield return new WaitForSeconds(1f);
         PlayerController.instance.idleGhost.enabled = true;
         TailController.instance.sagTail.TailAnimatorAmount = 0f;
         TailController.instance.solTail.TailAnimatorAmount = 0f;
