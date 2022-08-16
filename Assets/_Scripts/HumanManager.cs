@@ -34,7 +34,7 @@ public class HumanManager : MonoBehaviour
              
         });
 
-        yield return new WaitForSeconds(1f);
+       // yield return new WaitForSeconds(.2f);
         StartCoroutine(delay(gameObject));
     }
     private void OnTriggerEnter(Collider other)
@@ -46,18 +46,44 @@ public class HumanManager : MonoBehaviour
          //   StartCoroutine(bekle());
           
             child = transform.childCount;
+          
             for (int i = 0; i < child; i++)
             {
                  transform.GetChild(i).GetComponent<Animator>().SetBool("turn", true);
-                 transform.GetChild(i).Rotate(0, 180, 0);
+                 //transform.GetChild(i).Rotate(0, 180, 0);
             }
+             //gameObject.transform.Rotate(0, 180, 0);
 
-           // human.SetBool("turn", true);
-         
+            // human.SetBool("turn", true);
+
             //human.SetBool("escape", true);
-          
-          ///
 
+            ///
+            GameManager.instance.IncreaseScore();
+        }
+        else if (other.CompareTag("Player"))
+        {
+            PlayerMovement.instance.speed = 0;
+            PlayerController.instance.anim.SetBool("run", false);
+            PlayerController.instance.anim.SetBool("focus", true);
+            int humanChild=transform.childCount;
+            for (int i = 0; i < humanChild; i++)
+            {
+                Debug.Log("aaa");
+                transform.GetChild(i).GetComponent<Animator>().SetBool("hit", true);
+                if (transform.GetChild(i).position.x>0)
+                {
+                    transform.GetChild(i).Rotate(0, 90, 0);
+                }
+                else if (transform.GetChild(i).position.x < 0)
+                {
+                    transform.GetChild(i).Rotate(0, -90, 0);
+                }
+                
+               
+                //transform.GetChild(i).Rotate(0, 180, 0);
+            }
+            //UiController.instance.OpenLosePanel();
         }
     }
     IEnumerator bekle()
@@ -70,17 +96,18 @@ public class HumanManager : MonoBehaviour
 
     IEnumerator delay(GameObject gh)
     {
-       // yield return new WaitForSeconds(.2f);
+        // yield return new WaitForSeconds(.2f);
         //human.SetBool("escape", true);
-   
-        
+        //gameObject.transform.Rotate(0, 180, 0);
+
         for (int i = 0; i < child; i++)
         {
             
             yield return new WaitForSeconds(.02f);
-            //gameObject.transform.Rotate(0, 180, 0);
+          
             gh.transform.GetChild(i).GetComponent<Animator>().SetBool("escape", true);
-            //tekrar düzenle
+            gh.transform.GetChild(i).Rotate(0, 180, 0);
+            
             if (gh.transform.GetChild(i).position.x >= 0)
             {
                 Debug.Log("sola");
