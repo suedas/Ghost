@@ -108,11 +108,11 @@ public class HumanManager : MonoBehaviour
         for (int i = 0; i < child; i++)
         {
             
-            yield return new WaitForSeconds(.02f);
-          
             gh.transform.GetChild(i).GetComponent<Animator>().SetBool("escape", true);
             gh.transform.GetChild(i).Rotate(0, 180, 0);
             
+            yield return new WaitForSeconds(.02f);
+          
             if (gh.transform.GetChild(i).position.x >= 0)
             {
                 Debug.Log("sola");

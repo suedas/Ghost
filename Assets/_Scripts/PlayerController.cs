@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
                  ////anim.SetBool("idle", true);
                  //starP.SetActive(true);
                  //UiController.instance.OpenLosePanel();
+                SwerveMovement.instance.isSwerve = false;
                 StartCoroutine(stickmanAim(other.gameObject));
             }
         }
@@ -119,8 +120,10 @@ public class PlayerController : MonoBehaviour
             
             if (gameObject.tag=="Player")
             {//buraya girmiyor
+                SwerveMovement.instance.isSwerve = false;
                 StartCoroutine(stickmanAim(other.gameObject));
-           
+
+
             }
         }
       
@@ -129,6 +132,7 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="Player")
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
+                SwerveMovement.instance.isSwerve = false;
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
                 gameObject.transform.DOMove(new Vector3(transform.position.x, -5f, transform.position.z + 8), 1f);
@@ -144,6 +148,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="ghost")
             {
+                SwerveMovement.instance.isSwerve = false;
                 idleGhost.enabled = false;
                 TailController.instance.sagTail.TailAnimatorAmount = 1.3f;
                 TailController.instance.solTail.TailAnimatorAmount = 1.3f;
@@ -162,6 +167,8 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="ghost")
             {
+                SwerveMovement.instance.isSwerve = false;
+
                 GameManager.instance.isContinue = false;
                 circleP.SetActive(true);
                 boomP.SetActive(true);
@@ -173,6 +180,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="ghost")
             {
+                SwerveMovement.instance.isSwerve = false;
                 GameManager.instance.isContinue = false;
                 gameObject.transform.DOMoveY(9, 2);
                 UiController.instance.OpenLosePanel();
