@@ -103,14 +103,15 @@ public class PlayerController : MonoBehaviour
         {
            
             if (gameObject.tag=="Player")
-            {//buraya girmiyor
-                other.gameObject.GetComponent<Collider>().isTrigger = false;
-                gameObject.transform.DOMoveZ(gameObject.transform.position.z - 3f, 2f);
-                anim.SetBool("run", false);
-                anim.SetBool("sad", true);
-                //anim.SetBool("idle", true);
-                starP.SetActive(true);
-                UiController.instance.OpenLosePanel();
+            {     //buraya girmiyor
+                 //other.gameObject.GetComponent<Collider>().isTrigger = false;
+                 //gameObject.transform.DOMoveZ(gameObject.transform.position.z - 3f, 2f);
+                 //anim.SetBool("run", false);
+                 //anim.SetBool("sad", true);
+                 ////anim.SetBool("idle", true);
+                 //starP.SetActive(true);
+                 //UiController.instance.OpenLosePanel();
+                StartCoroutine(stickmanAim(other.gameObject));
             }
         }
         else if (other.CompareTag("basamak"))
@@ -246,6 +247,8 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="Player")
             {
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
+                gameObject.transform.DOMoveZ(gameObject.transform.position.z - 2f, .5f);
+
                 anim.SetBool("run", false);
                 anim.SetBool("sad", true);
                 //anim.SetBool("idle", true);
@@ -360,7 +363,7 @@ public class PlayerController : MonoBehaviour
         starP.SetActive(false);
         fýckP.SetActive(false);
         ruzgar.SetActive(false);
-       
+        SwerveMovement.instance.isSwerve = true;
         //if (chest.instance.chestAnim.enabled ==true)
         //{
         //    chest.instance.confetiP.SetActive(false);
@@ -369,9 +372,6 @@ public class PlayerController : MonoBehaviour
         //    chest.instance.chestAnim.enabled = false;
 
         //}
-
-
-
 
     }
 

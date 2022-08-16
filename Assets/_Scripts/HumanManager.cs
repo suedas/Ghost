@@ -117,7 +117,7 @@ public class HumanManager : MonoBehaviour
             {
                 Debug.Log("sola");
                 
-                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 200), 19f);
+                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 200), 10f).OnComplete(()=> { Destroy(gameObject); });
                 //gh.transform.GetChild(i).DOMoveX(Random.Range(-3f,0), 5f).OnComplete(()=>
                 //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
 
@@ -125,7 +125,7 @@ public class HumanManager : MonoBehaviour
             else if(gh.transform.GetChild(i).position.x < 0)
             {
                 Debug.Log("saga");
-                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 200), 19f);
+                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 200), 10f).OnComplete(() => { Destroy(gameObject); });
                 //gh.transform.GetChild(i).DOMoveX(Random.Range(-1f, 1), .5f).OnComplete(() =>
                 //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
             }
