@@ -354,6 +354,7 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("run ", false);
         anim.SetBool("dance", false);
         anim.SetBool("sad", false);
+        anim.SetBool("focus", false);
         circleP.SetActive(false);
         boomP.SetActive(false);
         starP.SetActive(false);

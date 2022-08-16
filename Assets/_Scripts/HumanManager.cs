@@ -9,6 +9,7 @@ public class HumanManager : MonoBehaviour
     #region Singleton
     public static HumanManager instance;
     public int child;
+   // public GameObject scared;
     void Awake()
     {
         if (instance == null) instance = this;
@@ -41,7 +42,7 @@ public class HumanManager : MonoBehaviour
     {
         if (other.CompareTag("ghost"))
         {
-
+            //scared.SetActive(true);
             StartCoroutine(ghostAnim(other.gameObject));
          //   StartCoroutine(bekle());
           
@@ -50,6 +51,7 @@ public class HumanManager : MonoBehaviour
             for (int i = 0; i < child; i++)
             {
                  transform.GetChild(i).GetComponent<Animator>().SetBool("turn", true);
+                transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                  //transform.GetChild(i).Rotate(0, 180, 0);
             }
              //gameObject.transform.Rotate(0, 180, 0);
@@ -71,6 +73,8 @@ public class HumanManager : MonoBehaviour
             {
                 Debug.Log("aaa");
                 transform.GetChild(i).GetComponent<Animator>().SetBool("hit", true);
+                transform.GetChild(i).GetChild(3).gameObject.SetActive(true);
+
                 if (transform.GetChild(i).position.x>0)
                 {
                     transform.GetChild(i).Rotate(0, 90, 0);
@@ -83,13 +87,14 @@ public class HumanManager : MonoBehaviour
                
                 //transform.GetChild(i).Rotate(0, 180, 0);
             }
-            //UiController.instance.OpenLosePanel();
+            StartCoroutine(bekle());
         }
     }
     IEnumerator bekle()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
+        UiController.instance.OpenLosePanel();
         // gameObject.GetComponent<Collider>().enabled = true;
 
     }
