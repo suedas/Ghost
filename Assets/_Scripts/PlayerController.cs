@@ -172,31 +172,43 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("boxbutton"))
         {//olmuyorrrrrrrrrrrrrr
-
             if (gameObject.tag == "Player")
             {
                 other.gameObject.GetComponent<Animator>().enabled = true;
                 PlayerMovement.instance.speed = 0;
-                StartCoroutine(delirmelik());
+                anim.SetBool("run", false);
+                anim.SetBool("idle", true);
+                int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
+                for (int i = 0; i < boxChild; i++)
+                {
+                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(0,1), -4.5f), 1f).SetEase(Ease.OutBounce);
+                }
+                //StartCoroutine(delirmelik());
                 // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
                 //boxAnim.SetBool("box", true);
             }
+
+
         }
         else if (other.CompareTag("cagebutton"))
         {
-            other.gameObject.GetComponent<Animator>().enabled = true;
+            if (gameObject.tag=="Player")
+            {
+                other.gameObject.GetComponent<Animator>().enabled = true;
 
-            PlayerMovement.instance.speed = 0;
-            anim.SetBool("run", false);
-            anim.SetBool("idle", true);
-            other.gameObject.transform.GetChild(2).DOMoveY(-1, .5f).OnComplete(()=> {
-                HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
-                other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
-                anim.SetBool("run", true);
-                anim.SetBool("idle", false);
-                PlayerMovement.instance.speed = 6;
-            });
-  
+                PlayerMovement.instance.speed = 0;
+                anim.SetBool("run", false);
+                anim.SetBool("idle", true);
+                other.gameObject.transform.GetChild(2).DOMoveY(-1, .5f).OnComplete(() => {
+                    HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
+                    other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
+                    anim.SetBool("run", true);
+                    anim.SetBool("idle", false);
+                    PlayerMovement.instance.speed = 6;
+                });
+
+            }
+
         }
         else if (other.CompareTag("finish"))
         {
