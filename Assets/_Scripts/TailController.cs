@@ -14,15 +14,5 @@ public class TailController : MonoBehaviour
     }
     #endregion
     public TailAnimator2 sagTail, solTail;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

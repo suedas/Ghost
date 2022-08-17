@@ -42,10 +42,9 @@ public class HumanManager : MonoBehaviour
     {
         if (other.CompareTag("ghost"))
         {
-            //scared.SetActive(true);
-            StartCoroutine(ghostAnim(other.gameObject));
-         //   StartCoroutine(bekle());
-          
+            StartCoroutine(PlayerController.instance.swipeController());
+           
+            StartCoroutine(ghostAnim(other.gameObject));          
             child = transform.childCount;
           
             for (int i = 0; i < child; i++)
@@ -65,6 +64,7 @@ public class HumanManager : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
+            SwerveMovement.instance.isSwipe = false;
             PlayerMovement.instance.speed = 0;
             PlayerController.instance.anim.SetBool("run", false);
             PlayerController.instance.anim.SetBool("focus", true);
@@ -90,10 +90,10 @@ public class HumanManager : MonoBehaviour
             StartCoroutine(bekle());
         }
     }
+   
     IEnumerator bekle()
     {
         yield return new WaitForSeconds(2f);
-
         UiController.instance.OpenLosePanel();
         // gameObject.GetComponent<Collider>().enabled = true;
 

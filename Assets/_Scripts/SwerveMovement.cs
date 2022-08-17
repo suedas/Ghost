@@ -17,7 +17,7 @@ public class SwerveMovement : MonoBehaviour
     public bool isHuman;
     private float lastMousePosY, firstMousePosY;
     [SerializeField] private float swipeDistance = 20;
-    public bool isSwerve=true;
+    public bool isSwipe=true;
 
     #region Singleton
     public static SwerveMovement instance;
@@ -30,7 +30,7 @@ public class SwerveMovement : MonoBehaviour
     private void Update()
     {
 
-        if (isSwerve) { 
+        if (isSwipe) { 
             if (Input.GetMouseButtonDown(0))
             {
                 // oyunu baþlatýyoruz.. karakter ileri hareket etmeye baþlýyor..

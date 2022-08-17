@@ -39,16 +39,11 @@ public class PlayerController : MonoBehaviour
     {
         
         anim =player.GetComponent<Animator>();
-        anim.SetBool("run", false);
-
-     
-        
+        anim.SetBool("run", false);   
         chest.instance.confetiP.SetActive(false);
         chest.instance.magicP.SetActive(false);
         chest.instance.dolarP.SetActive(false);
         chest.instance.chestAnim.enabled = false;
-        
-        //anim.SetBool("idle", true);
     }
     public void Ghost()
     {
@@ -68,29 +63,8 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("collectibleGhost"))
-        {
-            //GameManager.instance.IncreaseScore();
-            //ghost.SetActive(true);
-            //gameObject.tag = "ghost";
-            //player.SetActive(false);
-            //other.gameObject.SetActive(false);
-           // Destroy(other.gameObject);
-
-        }
-        else if (other.CompareTag("collectiblePlayer"))
-        {
-           // GameManager.instance.IncreaseScore();
-            //player.SetActive(true);
-            //gameObject.tag = "Player";
-            //anim.SetBool("run", true);
-            //ghost.SetActive(false);
-            //other.gameObject.SetActive(false);
-
-           //Destroy(other.gameObject);
-
-        }
-        else if (other.CompareTag("diamond"))
+        
+        if (other.CompareTag("diamond"))
         {
             if (gameObject.tag=="Player")
             {
@@ -101,54 +75,56 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("duvar"))
         {
-           
+            StartCoroutine(swipeController());
             if (gameObject.tag=="Player")
-            {     //buraya girmiyor
-                 //other.gameObject.GetComponent<Collider>().isTrigger = false;
-                 //gameObject.transform.DOMoveZ(gameObject.transform.position.z - 3f, 2f);
-                 //anim.SetBool("run", false);
-                 //anim.SetBool("sad", true);
-                 ////anim.SetBool("idle", true);
-                 //starP.SetActive(true);
-                 //UiController.instance.OpenLosePanel();
-                SwerveMovement.instance.isSwerve = false;
+            {  
+                //SwerveMovement.instance.isSwipe = false;
                 StartCoroutine(stickmanAim(other.gameObject));
             }
         }
         else if (other.CompareTag("basamak"))
         {
-            
+            StartCoroutine(swipeController());
+
+
             if (gameObject.tag=="Player")
-            {//buraya girmiyor
-                SwerveMovement.instance.isSwerve = false;
+            {
+                //SwerveMovement.instance.isSwipe = false;
                 StartCoroutine(stickmanAim(other.gameObject));
-
-
             }
         }
       
         else if (other.CompareTag("bosluk"))
         {
+            StartCoroutine(swipeController());
+
             if (gameObject.tag=="Player")
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
-                SwerveMovement.instance.isSwerve = false;
+                //SwerveMovement.instance.isSwipe = false;
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
-                gameObject.transform.DOMove(new Vector3(transform.position.x, -5f, transform.position.z + 8), 1f);
+                gameObject.transform.DOMove(new Vector3(transform.position.x, -7f, transform.position.z + 8), 1f);
                 UiController.instance.OpenLosePanel();
                
                // cb.enabled = false;
 
+            }
+            else if (gameObject.tag=="ghost")
+            {
+                Debug.Log("burda");
+                StartCoroutine(swipeController());
             }
          
         }
         
         else if (other.CompareTag("mazgal"))
         {
+            StartCoroutine(swipeController());
+
             if (gameObject.tag=="ghost")
             {
-                SwerveMovement.instance.isSwerve = false;
+               // SwerveMovement.instance.isSwipe = false;
                 idleGhost.enabled = false;
                 TailController.instance.sagTail.TailAnimatorAmount = 1.3f;
                 TailController.instance.solTail.TailAnimatorAmount = 1.3f;
@@ -165,10 +141,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("hunter"))
         {
+            StartCoroutine(swipeController());
+
             if (gameObject.tag=="ghost")
             {
-                SwerveMovement.instance.isSwerve = false;
-
+                //SwerveMovement.instance.isSwipe = false;
                 GameManager.instance.isContinue = false;
                 circleP.SetActive(true);
                 boomP.SetActive(true);
@@ -178,9 +155,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("fan"))
         {
+            StartCoroutine(swipeController());
+
             if (gameObject.tag=="ghost")
             {
-                SwerveMovement.instance.isSwerve = false;
+                //SwerveMovement.instance.isSwipe = false;
                 GameManager.instance.isContinue = false;
                 gameObject.transform.DOMoveY(9, 1).SetEase(Ease.Linear);
                 UiController.instance.OpenLosePanel();
@@ -190,22 +169,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.CompareTag("finish"))
         {
-            // oyun sonu olaylari... animasyon.. score.. panel acip kapatmak
-            // oyunu kazandi mi kaybetti mi kontntrolu gerekirse yapilabilir.
-            // player durdurulur. tagi finish olan obje level prefablarinin icinde yolun sonundadýr.
-            // ornek olarak asagidaki kodda score 10 dan buyukse kazan degilse kaybet dedik ancak
-            // bazý oyunlarda farkli parametlere göre kontrol etmek veya oyun sonunda karakterin yola devam etmesi gibi
-            // durumlarda developer burayý kendisi duzenlemelidir.
 
             PlayerMovement.instance.speed = 10f;
             ruzgar.SetActive(true);
-            //if (gameObject.tag == "Player")
-            //{
-            //    transform.Rotate(0, -180, 0);     
-            //    anim.SetBool("run", false);
-            //    anim.SetBool("dance", true);
-            //}
-            
+        
         }
         else if (other.CompareTag("1x"))
         {
@@ -254,7 +221,8 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
-                SwerveMovement.instance.isSwerve = false;
+
+                //SwerveMovement.instance.isSwipe = false;
                 other.gameObject.GetComponent<Collider>().isTrigger = false;
                 gameObject.transform.DOMoveZ(gameObject.transform.position.z - 2f, .5f);
 
@@ -272,7 +240,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag == "ghost")
             {
-                SwerveMovement.instance.isSwerve = false;
+                //SwerveMovement.instance.isSwipe = false;
                 Debug.Log("oyunsonumazgal");
                 idleGhost.enabled = false;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
@@ -285,6 +253,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+    }
+   public IEnumerator swipeController()
+    {
+        Debug.Log("swipe false");
+        SwerveMovement.instance.isSwipe = false;
+        yield return new WaitForSeconds(1f);
+        if (!UiController.instance.losePanel.activeInHierarchy)
+        {
+            Debug.Log("swipe true");
+            SwerveMovement.instance.isSwipe = true;
+        }
     }
     public IEnumerator stickmanAim(GameObject other)
     {
@@ -373,16 +352,7 @@ public class PlayerController : MonoBehaviour
         starP.SetActive(false);
         fýckP.SetActive(false);
         ruzgar.SetActive(false);
-        SwerveMovement.instance.isSwerve = true;
-        //if (chest.instance.chestAnim.enabled ==true)
-        //{
-        //    chest.instance.confetiP.SetActive(false);
-        //    chest.instance.magicP.SetActive(false);
-        //    chest.instance.dolarP.SetActive(false);
-        //    chest.instance.chestAnim.enabled = false;
-
-        //}
-
+        SwerveMovement.instance.isSwipe = true;
     }
 
     /// <summary>

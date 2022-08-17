@@ -94,7 +94,7 @@ public class UiController : MonoBehaviour
 	public void OpenLosePanel()
 	{
 		GameManager.instance.isContinue = false;
-		SwerveMovement.instance.isSwerve = false;
+		SwerveMovement.instance.isSwipe = false;
 		losePanel.SetActive(true);
 		PlayerMovement.instance.speed = 0;
 	}
