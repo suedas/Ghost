@@ -169,7 +169,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.56265986, y: 1}
+    m_SensorSize: {x: 0.4198783, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8612313}
-  m_LocalRotation: {x: 0.10896105, y: -0.000000023931532, z: 0.0000000026232236, w: 0.99404603}
+  m_LocalRotation: {x: 0.108961076, y: 0.000000006370576, z: -6.983025e-10, w: 0.99404603}
   m_LocalPosition: {x: 0, y: 4.5, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5225,6 +5225,7 @@ MonoBehaviour:
   idleGhost: {fileID: 500997613}
   count: 0
   diamondTarget: {fileID: 259493851}
+  box: {fileID: 769025098076251330, guid: 012e8ebd0b7af8944a353e9016c7a8c4, type: 3}
 --- !u!114 &1597856537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5244,7 +5245,7 @@ MonoBehaviour:
   maxHorizontalChange: 0.6
   isHuman: 0
   swipeDistance: 40
-  isSwerve: 1
+  isSwipe: 1
 --- !u!54 &1597856538
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5553,7 +5554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654838904}
-  m_LocalRotation: {x: 0.10896105, y: -0.000000023931532, z: 0.0000000026232236, w: 0.99404603}
+  m_LocalRotation: {x: 0.108961076, y: 0.000000006370576, z: -6.983025e-10, w: 0.99404603}
   m_LocalPosition: {x: 0, y: 4.5, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

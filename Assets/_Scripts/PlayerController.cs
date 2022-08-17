@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public  Animator idleGhost;
     public int count;
     public Transform diamondTarget;
+    public GameObject box;
+    public GameObject humans;
+    
     //public TailAnimator2 sagTail, solTail;
    
     private void Start()
@@ -167,6 +170,34 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+        else if (other.CompareTag("boxbutton"))
+        {//olmuyorrrrrrrrrrrrrr
+
+            if (gameObject.tag == "Player")
+            {
+                other.gameObject.GetComponent<Animator>().enabled = true;
+                PlayerMovement.instance.speed = 0;
+                StartCoroutine(delirmelik());
+                // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
+                //boxAnim.SetBool("box", true);
+            }
+        }
+        else if (other.CompareTag("cagebutton"))
+        {
+            other.gameObject.GetComponent<Animator>().enabled = true;
+
+            PlayerMovement.instance.speed = 0;
+            anim.SetBool("run", false);
+            anim.SetBool("idle", true);
+            other.gameObject.transform.GetChild(2).DOMoveY(-1, .5f).OnComplete(()=> {
+                HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
+                other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
+                anim.SetBool("run", true);
+                anim.SetBool("idle", false);
+                PlayerMovement.instance.speed = 6;
+            });
+  
+        }
         else if (other.CompareTag("finish"))
         {
 
@@ -254,6 +285,23 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    public IEnumerator delirmelik()
+    {
+        //int boxChild = box.transform.childCount;
+        int boxChild = box.transform.GetChild(0).childCount;
+        Debug.Log(boxChild);
+        // box.transform.GetChild(0).DOMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
+        for (int i = 1; i < boxChild; i++)
+        {
+            Debug.Log("burda");
+            Debug.Log(i);
+            //box.transform.GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
+            yield return new WaitForSeconds(.5f);
+
+            // box.transform.GetChild(i).DOMove(new Vector3( Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z),1f);
+        }
+        yield return new WaitForSeconds(.5f);
+    }
    public IEnumerator swipeController()
     {
         Debug.Log("swipe false");
@@ -265,7 +313,7 @@ public class PlayerController : MonoBehaviour
             SwerveMovement.instance.isSwipe = true;
         }
     }
-    public IEnumerator stickmanAim(GameObject other)
+    public IEnumerator stickmanAim(GameObject other) 
     {
         other.gameObject.GetComponent<Collider>().isTrigger = false;
         gameObject.transform.DOMoveZ(gameObject.transform.position.z - 2f, .5f);

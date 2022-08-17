@@ -47,7 +47,7 @@ public class HumanManager : MonoBehaviour
             StartCoroutine(ghostAnim(other.gameObject));          
             child = transform.childCount;
           
-            for (int i = 0; i < child; i++)
+            for (int i = 1; i < child; i++)
             {
                  transform.GetChild(i).GetComponent<Animator>().SetBool("turn", true);
                 transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
@@ -69,7 +69,7 @@ public class HumanManager : MonoBehaviour
             PlayerController.instance.anim.SetBool("run", false);
             PlayerController.instance.anim.SetBool("focus", true);
             int humanChild=transform.childCount;
-            for (int i = 0; i < humanChild; i++)
+            for (int i = 1; i < humanChild; i++)
             {
                 Debug.Log("aaa");
                 transform.GetChild(i).GetComponent<Animator>().SetBool("hit", true);
@@ -105,7 +105,7 @@ public class HumanManager : MonoBehaviour
         //human.SetBool("escape", true);
         //gameObject.transform.Rotate(0, 180, 0);
 
-        for (int i = 0; i < child; i++)
+        for (int i = 1; i < child; i++)
         {
             
             yield return new WaitForSeconds(.02f);
