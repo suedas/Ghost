@@ -464,6 +464,7 @@ public class PlayerController : MonoBehaviour
         fýckP.SetActive(false);
         ruzgar.SetActive(false);
         SwerveMovement.instance.isSwipe = true;
+     
     }
 
     /// <summary>
@@ -471,7 +472,9 @@ public class PlayerController : MonoBehaviour
     /// gibi degerleri degistirilecekse onlar bu fonksiyon icinde yapilir...
     /// </summary>
     public void PostStartingEvents()
-	{
+    {
+        
+
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
 
