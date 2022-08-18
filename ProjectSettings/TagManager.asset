@@ -34,8 +34,9 @@ TagManager:
   - oyunsonumazgal
   - diamond
   - boxbutton
-  - box button
   - cagebutton
+  - boslukbutton
+  - basamakbutton
   layers:
   - Default
   - TransparentFX

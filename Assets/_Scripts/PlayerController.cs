@@ -221,6 +221,37 @@ public class PlayerController : MonoBehaviour
                 //boxAnim.SetBool("box", true);
             }
         }
+        else if (other.CompareTag("boslukbutton"))
+        {
+            if (gameObject.tag=="Player")
+            {
+                other.gameObject.GetComponent<Animator>().enabled = true;
+                PlayerMovement.instance.speed = 0;
+                anim.SetBool("run", false);
+                anim.SetBool("idle", true);
+                other.transform.GetChild(2).GetComponent<Collider>().enabled =false;
+                other.transform.GetChild(3).DOMoveZ(other.transform.GetChild(3).position.z + 7f, 1).OnComplete(() => {
+                    anim.SetBool("run", true);
+                    anim.SetBool("idle", false);
+                    PlayerMovement.instance.speed = 6;
+                }); ;
+            }
+        }
+        else if (other.CompareTag("fanbutton"))
+        {
+            if (gameObject.tag == "Player")
+            {
+                other.gameObject.GetComponent<Animator>().enabled = true;
+                PlayerMovement.instance.speed = 0;
+                anim.SetBool("run", false);
+                anim.SetBool("idle", true);
+                other.transform.GetChild(2).DOMoveY(12f, .5f).SetEase(Ease.InFlash).OnComplete(() => {
+                    anim.SetBool("run", true);
+                    anim.SetBool("idle", false);
+                    PlayerMovement.instance.speed = 6;
+                }); ;
+            }
+        }
         else if (other.CompareTag("cagebutton"))
         {
             if (gameObject.tag=="Player")
