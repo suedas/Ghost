@@ -207,18 +207,6 @@ public class PlayerController : MonoBehaviour
                     PlayerMovement.instance.speed = 6f;
                 });  
                     
-                int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
-                for (int i = 0; i < boxChild; i++)
-                {
-                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -10.3f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
-                        anim.SetBool("run", true);
-                        anim.SetBool("idle", false);
-                        PlayerMovement.instance.speed = 6f;
-                    }); 
-                }
-                //StartCoroutine(delirmelik());
-                // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
-                //boxAnim.SetBool("box", true);
             }
         }
         else if (other.CompareTag("boslukbutton"))
@@ -230,7 +218,7 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
                 other.transform.GetChild(2).GetComponent<Collider>().enabled =false;
-                other.transform.GetChild(3).DOMoveZ(other.transform.GetChild(3).position.z + 7f, 1).OnComplete(() => {
+                other.transform.GetChild(3).DOMoveZ(other.transform.GetChild(3).position.z + 8f, 1).OnComplete(() => {
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
                     PlayerMovement.instance.speed = 6;
@@ -256,6 +244,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
+                StartCoroutine(swipeController());
                 other.gameObject.GetComponent<Animator>().enabled = true;
 
                 PlayerMovement.instance.speed = 0;

@@ -37,6 +37,7 @@ TagManager:
   - cagebutton
   - boslukbutton
   - basamakbutton
+  - fanbutton
   layers:
   - Default
   - TransparentFX
