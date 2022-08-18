@@ -181,7 +181,10 @@ public class PlayerController : MonoBehaviour
                 int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
                 for (int i = 0; i < boxChild; i++)
                 {
-                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(0,1), -4.5f), 1f).SetEase(Ease.OutBounce);
+                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -10.3f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
+                        anim.SetBool("run", true);
+                        anim.SetBool("idle", false);
+                        PlayerMovement.instance.speed = 6f; }); ;
                 }
                 //StartCoroutine(delirmelik());
                 // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
@@ -189,6 +192,34 @@ public class PlayerController : MonoBehaviour
             }
 
 
+        }
+        else if (other.CompareTag("basamakbutton"))
+        {
+            if (gameObject.tag == "Player")
+            {
+                other.gameObject.GetComponent<Animator>().enabled = true;
+                PlayerMovement.instance.speed = 0;
+                anim.SetBool("run", false);
+                anim.SetBool("idle", true);
+                other.transform.GetChild(2).DOMoveY(-1.58f, 1).OnComplete(() => {
+                    anim.SetBool("run", true);
+                    anim.SetBool("idle", false);
+                    PlayerMovement.instance.speed = 6f;
+                });  
+                    
+                int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
+                for (int i = 0; i < boxChild; i++)
+                {
+                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -10.3f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
+                        anim.SetBool("run", true);
+                        anim.SetBool("idle", false);
+                        PlayerMovement.instance.speed = 6f;
+                    }); 
+                }
+                //StartCoroutine(delirmelik());
+                // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
+                //boxAnim.SetBool("box", true);
+            }
         }
         else if (other.CompareTag("cagebutton"))
         {
