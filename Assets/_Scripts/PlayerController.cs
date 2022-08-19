@@ -464,7 +464,7 @@ public class PlayerController : MonoBehaviour
         fýckP.SetActive(false);
         ruzgar.SetActive(false);
         SwerveMovement.instance.isSwipe = true;
-     
+        UiController.instance.gamePanel.SetActive(true);
     }
 
     /// <summary>

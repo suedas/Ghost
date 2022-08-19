@@ -86,6 +86,7 @@ public class UiController : MonoBehaviour
 
 	public void OpenWinPanel()
 	{
+		gamePanel.SetActive(false);
 		winPanel.SetActive(true);
 
 	}
@@ -93,6 +94,7 @@ public class UiController : MonoBehaviour
 
 	public void OpenLosePanel()
 	{
+		gamePanel.SetActive(false);
 		GameManager.instance.isContinue = false;
 		SwerveMovement.instance.isSwipe = false;
 		losePanel.SetActive(true);
