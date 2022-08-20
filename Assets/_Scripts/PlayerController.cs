@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public Transform diamondTarget;
     public GameObject box;
     public GameObject humans;
+   
+    
     
     //public TailAnimator2 sagTail, solTail;
    
@@ -178,10 +180,11 @@ public class PlayerController : MonoBehaviour
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
+                other.transform.GetChild(2).GetChild(0).GetComponent<Animator>().enabled = false;
                 int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
                 for (int i = 0; i < boxChild; i++)
                 {
-                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -10.3f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
+                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -9.5f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
                         anim.SetBool("run", true);
                         anim.SetBool("idle", false);
                         PlayerMovement.instance.speed = 6f; }); ;
@@ -250,7 +253,9 @@ public class PlayerController : MonoBehaviour
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
+                
                 other.gameObject.transform.GetChild(2).DOMoveY(-1, .5f).OnComplete(() => {
+                    other.gameObject.transform.GetChild(2).GetChild(1).gameObject.SetActive(true);
                     HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
                     other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
                     anim.SetBool("run", true);

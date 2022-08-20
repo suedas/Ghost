@@ -16,7 +16,7 @@ public class UiController : MonoBehaviour
 	#endregion
 
 	public GameObject winPanel, gamePanel, losePanel,tapToStartPanel;
-	public TextMeshProUGUI scoreText,levelText;
+	public TextMeshProUGUI scoreText,levelText,winscoreText;
 
 	private void Start()
 	{
@@ -86,9 +86,9 @@ public class UiController : MonoBehaviour
 
 	public void OpenWinPanel()
 	{
+		winscoreText.text = GameManager.instance.levelScore.ToString();
 		gamePanel.SetActive(false);
 		winPanel.SetActive(true);
-
 	}
 
 
