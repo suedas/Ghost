@@ -87,6 +87,7 @@ public class UiController : MonoBehaviour
 	public void OpenWinPanel()
 	{
 		winscoreText.text = GameManager.instance.levelScore.ToString();
+		SwerveMovement.instance.isSwipe = false;
 		gamePanel.SetActive(false);
 		winPanel.SetActive(true);
 	}
