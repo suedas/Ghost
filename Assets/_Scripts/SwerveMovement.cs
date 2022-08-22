@@ -73,9 +73,11 @@ public class SwerveMovement : MonoBehaviour
 
             var x = transform.position.x + swerve;
             if (x < maxHorizontalDistance && x > -maxHorizontalDistance)
+                transform.Rotate(90, 0, 0);
                 if (checkDistanceChange)
                 {
                     if (Mathf.Abs(x - lastPositonChange) < maxHorizontalChange) transform.Translate(swerve, 0, 0);
+            
                 }
                 else
                     transform.Translate(swerve, 0, 0);
