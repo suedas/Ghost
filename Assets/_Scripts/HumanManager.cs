@@ -64,6 +64,7 @@ public class HumanManager : MonoBehaviour
         }
         else if (other.CompareTag("Player"))
         {
+            Debug.Log("Player girdi");
             SwerveMovement.instance.isSwipe = false;
             PlayerMovement.instance.speed = 0;
             PlayerController.instance.anim.SetBool("run", false);
@@ -71,7 +72,7 @@ public class HumanManager : MonoBehaviour
             int humanChild=transform.childCount;
             for (int i = 0; i < humanChild; i++)
             {
-                Debug.Log("aaa");
+                Debug.Log("dövme gerceklesti");
                 transform.GetChild(i).GetComponent<Animator>().SetBool("hit", true);
                 transform.GetChild(i).GetChild(3).gameObject.SetActive(true);
                     if (transform.GetChild(i).position.x > 0)
@@ -85,15 +86,11 @@ public class HumanManager : MonoBehaviour
                
                      //transform.GetChild(i).LookAt(2*transform.position- other.gameObject.transform.position);
 
-              
-           
-
-
-
                 //transform.GetChild(i).Rotate(0, 180, 0);
             }
             StartCoroutine(bekle());
         }
+   
     }
    
     IEnumerator bekle()
