@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour
         {//olmuyorrrrrrrrrrrrrr
             if (gameObject.tag == "Player")
             {
+                SwerveMovement.instance.isSwipe = false;
                 other.gameObject.GetComponent<Animator>().enabled = true;
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
@@ -185,6 +186,7 @@ public class PlayerController : MonoBehaviour
                 for (int i = 0; i < boxChild; i++)
                 {
                     other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -9.5f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
+                        SwerveMovement.instance.isSwipe = true;
                         anim.SetBool("run", true);
                         anim.SetBool("idle", false);
                         PlayerMovement.instance.speed = 6f; }); ;
@@ -200,11 +202,15 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
+                SwerveMovement.instance.isSwipe = false;
+
                 other.gameObject.GetComponent<Animator>().enabled = true;
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
                 other.transform.GetChild(2).DOMoveY(-1.58f, 1).OnComplete(() => {
+                    SwerveMovement.instance.isSwipe = true;
+
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
                     PlayerMovement.instance.speed = 6f;
@@ -216,12 +222,15 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
+                SwerveMovement.instance.isSwipe = false;
+
                 other.gameObject.GetComponent<Animator>().enabled = true;
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
                 other.transform.GetChild(2).GetComponent<Collider>().enabled =false;
                 other.transform.GetChild(3).DOMoveZ(other.transform.GetChild(3).position.z + 8f, 1).OnComplete(() => {
+                    SwerveMovement.instance.isSwipe = true;
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
                     PlayerMovement.instance.speed = 6;
@@ -232,11 +241,14 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag == "Player")
             {
+                SwerveMovement.instance.isSwipe = false;
+
                 other.gameObject.GetComponent<Animator>().enabled = true;
                 PlayerMovement.instance.speed = 0;
                 anim.SetBool("run", false);
                 anim.SetBool("idle", true);
                 other.transform.GetChild(2).DOMoveY(12f, .5f).SetEase(Ease.InFlash).OnComplete(() => {
+                    SwerveMovement.instance.isSwipe = true;
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
                     PlayerMovement.instance.speed = 6;
@@ -247,6 +259,7 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
+                SwerveMovement.instance.isSwipe = false;
                 StartCoroutine(swipeController());
                 other.gameObject.GetComponent<Animator>().enabled = true;
 
@@ -255,8 +268,11 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("idle", true);
                 
                 other.gameObject.transform.GetChild(2).DOMoveY(-1, .5f).OnComplete(() => {
+                    SwerveMovement.instance.isSwipe = true;
                     other.gameObject.transform.GetChild(2).GetChild(1).gameObject.SetActive(true);
-                    HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
+                    other.gameObject.transform.GetChild(3).parent = other.gameObject.transform.GetChild(2);
+
+                    //HumanManager.instance.transform.parent = other.gameObject.transform.GetChild(2);
                     other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
@@ -342,13 +358,20 @@ public class PlayerController : MonoBehaviour
                 //SwerveMovement.instance.isSwipe = false;
                 Debug.Log("oyunsonumazgal");
                 idleGhost.enabled = false;
+                TailController.instance.sagTail.TailAnimatorAmount = 1.3f;
+                TailController.instance.solTail.TailAnimatorAmount = 1.3f;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
+                gameObject.transform.DOMoveY(-1, .2f);
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
                 PlayerMovement.instance.speed = 0;
                 UiController.instance.OpenWinPanel();
                 GameManager.instance.oyunsonu();
+
+
+
+               
             }
         }
 

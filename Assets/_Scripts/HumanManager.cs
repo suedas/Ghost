@@ -74,17 +74,22 @@ public class HumanManager : MonoBehaviour
                 Debug.Log("aaa");
                 transform.GetChild(i).GetComponent<Animator>().SetBool("hit", true);
                 transform.GetChild(i).GetChild(3).gameObject.SetActive(true);
-
-                if (transform.GetChild(i).position.x>0)
-                {
-                    transform.GetChild(i).Rotate(0, 90, 0);
-                }
-                else if (transform.GetChild(i).position.x < 0)
-                {
-                    transform.GetChild(i).Rotate(0, -90, 0);
-                }
-                
+                    if (transform.GetChild(i).position.x > 0)
+                    {
+                        transform.GetChild(i).Rotate(0, 90, 0);
+                    }
+                    else if (transform.GetChild(i).position.x < 0)
+                    {
+                        transform.GetChild(i).Rotate(0, -90, 0);
+                    }
                
+                     //transform.GetChild(i).LookAt(2*transform.position- other.gameObject.transform.position);
+
+              
+           
+
+
+
                 //transform.GetChild(i).Rotate(0, 180, 0);
             }
             StartCoroutine(bekle());
