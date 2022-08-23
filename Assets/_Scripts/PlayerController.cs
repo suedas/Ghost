@@ -179,18 +179,40 @@ public class PlayerController : MonoBehaviour
                 anim.SetBool("idle", true);
                 other.transform.GetChild(2).GetChild(0).GetComponent<Animator>().enabled = false;
                 int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
-                for (int i = 0; i < boxChild; i++)
-                {
-                    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -9.5f), 1f).SetEase(Ease.OutBounce).OnComplete(() => {
+
+
+                other.transform.GetChild(2).GetChild(0).GetChild(0).DOLocalMove(new Vector3(0, 5.1f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(1).DOLocalMove(new Vector3(-1, 3.4f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(2).DOLocalMove(new Vector3(1, 3.4f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(3).DOLocalMove(new Vector3(-2,1.7f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(4).DOLocalMove(new Vector3(2, 1.7f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(5).DOLocalMove(new Vector3(0, 1.7f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(6).DOLocalMove(new Vector3(-1,0, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(7).DOLocalMove(new Vector3(1, 0f, -9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(8).DOLocalMove(new Vector3(0, -1.7f, -9f), .5f).SetEase(Ease.OutBounce).OnComplete(() =>
+                    {
                         SwerveMovement.instance.isSwipe = true;
                         anim.SetBool("run", true);
                         anim.SetBool("idle", false);
-                        PlayerMovement.instance.speed = 6f; }); ;
-                }
-                //StartCoroutine(delirmelik());
-                // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
-                //boxAnim.SetBool("box", true);
-            }
+                        PlayerMovement.instance.speed = 6f; }); 
+
+
+
+
+                        //for (int i = 0; i < boxChild; i++)
+                        //{
+                        //    other.transform.GetChild(2).GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.08f, 1.7f), Random.Range(-1, 1.2f), -9f), 1f).SetEase(Ease.OutBounce).OnComplete(() =>
+                        //    {
+                        //        SwerveMovement.instance.isSwipe = true;
+                        //        anim.SetBool("run", true);
+                        //        anim.SetBool("idle", false);
+                        //        PlayerMovement.instance.speed = 6f;
+                        //    }); ;
+                        //}
+                        //StartCoroutine(delirmelik());
+                        // box.transform.GetChild(0).GetComponent<Animator>().SetBool("box",true);
+                        //boxAnim.SetBool("box", true);
+                    }
 
 
         }
@@ -372,23 +394,23 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-    public IEnumerator delirmelik()
-    {
-        //int boxChild = box.transform.childCount;
-        int boxChild = box.transform.GetChild(0).childCount;
-        Debug.Log(boxChild);
-        // box.transform.GetChild(0).DOMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
-        for (int i = 1; i < boxChild; i++)
-        {
-            Debug.Log("burda");
-            Debug.Log(i);
-            //box.transform.GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
-            yield return new WaitForSeconds(.5f);
+    //public IEnumerator delirmelik()
+    //{
+    //    //int boxChild = box.transform.childCount;
+    //    int boxChild = box.transform.GetChild(0).childCount;
+    //    Debug.Log(boxChild);
+    //    // box.transform.GetChild(0).DOMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
+    //    for (int i = 1; i < boxChild; i++)
+    //    {
+    //        Debug.Log("burda");
+    //        Debug.Log(i);
+    //        //box.transform.GetChild(0).GetChild(i).DOLocalMove(new Vector3(Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z), 1f);
+    //        yield return new WaitForSeconds(.5f);
 
-            // box.transform.GetChild(i).DOMove(new Vector3( Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z),1f);
-        }
-        yield return new WaitForSeconds(.5f);
-    }
+    //        // box.transform.GetChild(i).DOMove(new Vector3( Random.Range(-2.7f, 6f), -7, box.transform.localPosition.z),1f);
+    //    }
+    //    yield return new WaitForSeconds(.5f);
+    //}
    public IEnumerator swipeController()
     {
         Debug.Log("swipe false");
