@@ -7,19 +7,16 @@ public class HumanManager : MonoBehaviour
 {
     public Animator human;
     #region Singleton
-    public static HumanManager instance;
     public int child;
    // public GameObject scared;
-    void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(this);
-    }
+
     #endregion
     private void Start()
     {
     
     }
+
+
     IEnumerator ghostAnim(GameObject other)
     {
             gameObject.GetComponent<Collider>().enabled = false;///
@@ -53,13 +50,7 @@ public class HumanManager : MonoBehaviour
                 transform.GetChild(i).GetChild(2).gameObject.SetActive(true);
                  //transform.GetChild(i).Rotate(0, 180, 0);
             }
-             //gameObject.transform.Rotate(0, 180, 0);
-
-            // human.SetBool("turn", true);
-
-            //human.SetBool("escape", true);
-
-            ///
+           
             GameManager.instance.IncreaseScore();
         }
         else if (other.CompareTag("Player"))
@@ -90,7 +81,7 @@ public class HumanManager : MonoBehaviour
             }
             StartCoroutine(bekle());
         }
-   
+     
     }
    
     IEnumerator bekle()
@@ -113,24 +104,52 @@ public class HumanManager : MonoBehaviour
             yield return new WaitForSeconds(.02f);
             gh.transform.GetChild(i).GetComponent<Animator>().SetBool("escape", true);
             gh.transform.GetChild(i).Rotate(0, 180, 0);
-            
-          
-            if (gh.transform.GetChild(i).position.x >= 0)
-            {
-                Debug.Log("sola");
-                
-                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 200), 10f).OnComplete(()=> { Destroy(gameObject); });
-                //gh.transform.GetChild(i).DOMoveX(Random.Range(-3f,0), 5f).OnComplete(()=>
-                //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
 
-            }
-            else if(gh.transform.GetChild(i).position.x < 0)
+            if (gh.transform.position.z<80)
             {
-                Debug.Log("saga");
-                gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 200), 10f).OnComplete(() => { Destroy(gameObject); });
-                //gh.transform.GetChild(i).DOMoveX(Random.Range(-1f, 1), .5f).OnComplete(() =>
-                //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
+                if (gh.transform.GetChild(i).position.x >= 0)
+                {
+                    Debug.Log("sola");
+
+                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 200), 8f).OnComplete(() => {
+                        transform.DOKill();
+                        Destroy(gameObject);
+                    });
+                    //gh.transform.GetChild(i).DOMoveX(Random.Range(-3f,0), 5f).OnComplete(()=>
+                    //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
+
+                }
+                else if (gh.transform.GetChild(i).position.x < 0)
+                {
+                    Debug.Log("saga");
+                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 200), 8f).OnComplete(() => { transform.DOKill(); Destroy(gameObject); });
+                    //gh.transform.GetChild(i).DOMoveX(Random.Range(-1f, 1), .5f).OnComplete(() =>
+                    //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
+                }
             }
+            else if (gh.transform.position.z > 80)
+            {
+                if (gh.transform.GetChild(i).position.x >= 0)
+                {
+                    Debug.Log("sola");
+
+                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 300), 3f).OnComplete(() => {
+                        transform.DOKill();
+                        Destroy(gameObject);
+                    });
+                    //gh.transform.GetChild(i).DOMoveX(Random.Range(-3f,0), 5f).OnComplete(()=>
+                    //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
+
+                }
+                else if (gh.transform.GetChild(i).position.x < 0)
+                {
+                    Debug.Log("saga");
+                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 300), 3f).OnComplete(() => { transform.DOKill(); Destroy(gameObject); });
+                    //gh.transform.GetChild(i).DOMoveX(Random.Range(-1f, 1), .5f).OnComplete(() =>
+                    //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
+                }
+            }
+          
         }
        // yield return new WaitForSeconds(1f);
         PlayerController.instance.idleGhost.enabled = true;

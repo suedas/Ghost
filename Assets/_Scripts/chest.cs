@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class chest : MonoBehaviour
 {
-    #region Singleton
-    public static chest instance;
-    void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(this);
-    }
-    #endregion
+
     public GameObject confetiP, magicP, dolarP;
     public Animator chestAnim;
-   
+
+    private void Start()
+    {
+        confetiP.SetActive(false);
+        magicP.SetActive(false);
+        dolarP.SetActive(false);
+        chestAnim.enabled = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -32,12 +32,12 @@ public class chest : MonoBehaviour
 
         }
     }
-    public IEnumerator delay()
+    IEnumerator delay()
     {
         yield return new WaitForSeconds(3f);
 
     }
-    public IEnumerator chestDelay()
+    IEnumerator chestDelay()
     {
         yield return new WaitForSeconds(2f);
         GameManager.instance.oyunsonu();

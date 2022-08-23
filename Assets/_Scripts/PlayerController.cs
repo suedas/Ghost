@@ -43,12 +43,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         
-        anim =player.GetComponent<Animator>();
-        anim.SetBool("run", false);   
-        chest.instance.confetiP.SetActive(false);
-        chest.instance.magicP.SetActive(false);
-        chest.instance.dolarP.SetActive(false);
-        chest.instance.chestAnim.enabled = false;
+        anim =player.GetComponent<Animator>();      
+        
     }
     public void Ghost()
     {
@@ -482,7 +478,7 @@ public class PlayerController : MonoBehaviour
         gameObject.tag = "Player";
         anim.SetBool("idle", true);
         anim.SetBool("fall", false);
-        anim.SetBool("run ", false);
+        //anim.SetBool("run ", false);
         anim.SetBool("dance", false);
         anim.SetBool("sad", false);
         anim.SetBool("focus", false);
