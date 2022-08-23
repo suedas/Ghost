@@ -4765,6 +4765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mazgal
       objectReference: {fileID: 0}
+    - target: {fileID: 7655673018059748461, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fbbdef008ab2b641b322f598d1fc1d5, type: 3}
 --- !u!4 &7100312559729719067 stripped
@@ -21773,7 +21777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071042955532583620, guid: df4cada67cb6c914ea0393bfa4894c27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 160.32845
+      value: 24.24
       objectReference: {fileID: 0}
     - target: {fileID: 5071042955532583620, guid: df4cada67cb6c914ea0393bfa4894c27, type: 3}
       propertyPath: m_LocalRotation.w

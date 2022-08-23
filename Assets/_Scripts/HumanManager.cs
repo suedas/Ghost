@@ -110,11 +110,11 @@ public class HumanManager : MonoBehaviour
                 if (gh.transform.GetChild(i).position.x >= 0)
                 {
                     Debug.Log("sola");
+                    //Random.Range(-1.9f, 0)
+                    gh.transform.GetChild(i).DOMove(new Vector3(4.2f, 0, 50), 2f).OnComplete(() => { gh.transform.GetChild(i).GetComponent<Animator>().SetBool("fall", true); gh.transform.GetChild(i).DOMoveY(-5f, 2f).OnComplete(() => { transform.DOKill(); Destroy(gameObject); }); });
 
-                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(-1.9f, 0), 0, 200), 8f).OnComplete(() => {
-                        transform.DOKill();
-                        Destroy(gameObject);
-                    });
+
+
                     //gh.transform.GetChild(i).DOMoveX(Random.Range(-3f,0), 5f).OnComplete(()=>
                     //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
 
@@ -122,7 +122,9 @@ public class HumanManager : MonoBehaviour
                 else if (gh.transform.GetChild(i).position.x < 0)
                 {
                     Debug.Log("saga");
-                    gh.transform.GetChild(i).DOMove(new Vector3(Random.Range(0, 1.9f), 0, 200), 8f).OnComplete(() => { transform.DOKill(); Destroy(gameObject); });
+                    //(Random.Range(0, 1.9f)
+                    gh.transform.GetChild(i).DOMove(new Vector3(-4.2f, 0, 50), 2f).OnComplete(() => { gh.transform.GetChild(i).GetComponent<Animator>().SetBool("fall", true); gh.transform.GetChild(i).DOMoveY(-5f, 2f).OnComplete(()=> { transform.DOKill(); Destroy(gameObject); });  });
+
                     //gh.transform.GetChild(i).DOMoveX(Random.Range(-1f, 1), .5f).OnComplete(() =>
                     //{ gh.transform.GetChild(i).DOMove(new Vector3(gh.transform.GetChild(i).position.x, 0, 200), 10f); });
                 }
