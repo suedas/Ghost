@@ -16,7 +16,7 @@ public class SwerveMovement : MonoBehaviour
     private float lastPositonChange;
     public bool isHuman;
     private float lastMousePosY, firstMousePosY;
-    [SerializeField] private float swipeDistance = 20;
+    [SerializeField] private float swipeDistance = 50;
     public bool isSwipe=true;
 
     #region Singleton
@@ -74,7 +74,7 @@ public class SwerveMovement : MonoBehaviour
             var x = transform.position.x + swerve;
             if (x < maxHorizontalDistance && x > -maxHorizontalDistance)
                 
-            // transform.rotation = Quaternion.Euler(0,x*20, 0);///????????
+            transform.rotation = Quaternion.Euler(0,swerve*10, 0);///????????
             if (checkDistanceChange)
                 {
                     if (Mathf.Abs(x - lastPositonChange) < maxHorizontalChange) transform.Translate(swerve, 0, 0);

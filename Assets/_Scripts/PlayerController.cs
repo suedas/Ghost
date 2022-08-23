@@ -475,7 +475,7 @@ public class PlayerController : MonoBehaviour
         blendOne = 0;
         blendTwo = 0;
         PlayerMovement.instance.transform.position = Vector3.zero;
-        PlayerController.instance.transform.position = Vector3.zero;
+        transform.position = Vector3.zero;
         GameManager.instance.isContinue = false;
         ghost.SetActive(false);
         player.SetActive(true);
