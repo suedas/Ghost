@@ -63,7 +63,7 @@ public class SwerveMovement : MonoBehaviour
 
 
                 transform.Translate(swerveAmountX, 0, 0);
-                transform.rotation = Quaternion.Euler(0, swerveAmountX * 40, 0);
+                transform.rotation = Quaternion.Euler(0, swerveAmountX * 10, 0);
 
                 var pos = transform.position;
                 if (transform.position.x > maxSwervePos)
