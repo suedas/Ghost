@@ -105,7 +105,8 @@ public class PlayerController : MonoBehaviour
                 //SwerveMovement.instance.isSwipe = false;
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
-                gameObject.transform.DOMove(new Vector3(transform.position.x, -7f, transform.position.z + 8), 1f);
+                gameObject.transform.DOMove(new Vector3(transform.position.x, -10f, transform.position.z + 25), 3f);
+                  
                 UiController.instance.OpenLosePanel();
                
                // cb.enabled = false;

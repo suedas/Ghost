@@ -114,10 +114,10 @@ public class HumanManager : MonoBehaviour
                 {
                     Debug.Log("saga");
                     //(Random.Range(0, 1.9f)
-                         dusman.transform.DOMove(new Vector3(Random.Range(-5.5f, -4.4f), 0, Random.Range(transform.position.z + 20, transform.position.z + 35)), 1.5f).OnComplete(() => {
+                         dusman.transform.DOMove(new Vector3(Random.Range(5.5f, 4.4f), 0, Random.Range(transform.position.z + 20, transform.position.z + 35)), 1.5f).OnComplete(() => {
                         dusman.transform.GetComponent<Animator>().SetBool("ss", true);
                         //gh.transform.GetChild(i).GetComponent<Animator>().enabled = false;
-                        dusman.transform.DOMove(new Vector3(Random.Range(-12, -6), -8, Random.Range(transform.position.z + 20, transform.position.z + 35)), 3f).OnComplete(() => {  Destroy(gameObject); }) ;
+                        dusman.transform.DOMove(new Vector3(Random.Range(12, 6), -8, Random.Range(transform.position.z + 20, transform.position.z + 35)), 3f).OnComplete(() => {  Destroy(gameObject); }) ;
                         
                     });
 
@@ -126,9 +126,9 @@ public class HumanManager : MonoBehaviour
                 {
                     Debug.Log("saga");
                     //(Random.Range(0, 1.9f)
-                    dusman.transform.DOMove(new Vector3(Random.Range(5.5f,4.4f), 0, Random.Range(transform.position.z+20,transform.position.z+35)), 1.5f).OnComplete(() => {
+                    dusman.transform.DOMove(new Vector3(Random.Range(-5.5f,-4.4f), 0, Random.Range(transform.position.z+20,transform.position.z+35)), 1.5f).OnComplete(() => {
                     dusman.transform.GetComponent<Animator>().SetBool("ss", true);
-                    dusman.transform.DOMove(new Vector3( Random.Range(12,6), -8, Random.Range(transform.position.z + 20, transform.position.z + 35)),3f).OnComplete(() => {  Destroy(gameObject); });
+                    dusman.transform.DOMove(new Vector3( Random.Range(-12,-6), -8, Random.Range(transform.position.z + 20, transform.position.z + 35)),3f).OnComplete(() => {  Destroy(gameObject); });
 
                     });
                 }     

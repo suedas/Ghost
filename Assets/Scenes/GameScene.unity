@@ -185,8 +185,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8612313}
-  m_LocalRotation: {x: 0.1506836, y: 0.000000017009917, z: -0.000000002592719, w: 0.9885821}
-  m_LocalPosition: {x: 0, y: 6.81, z: -9.54}
+  m_LocalRotation: {x: 0.13630024, y: 0.000000014762098, z: -0.000000002031032, w: 0.9906676}
+  m_LocalPosition: {x: 0, y: 6.81, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259493850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 7.56, z: -3.64}
+  m_LocalPosition: {x: 0.78, y: 7.72, z: -3.64}
   m_LocalScale: {x: 0.45199, y: 0.45199, z: 0.45199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6718,8 +6718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1bf0d017574b142b726e1bc951cb93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSwerveAmountX: 1
-  swerveSpeed: 0.4
+  maxSwerveAmountX: 0.5
+  swerveSpeed: 0.1
   maxSwervePos: 2
   isHuman: 0
   swipeDistance: 100
@@ -7033,8 +7033,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654838904}
-  m_LocalRotation: {x: 0.1506836, y: 0.000000017009917, z: -0.000000002592719, w: 0.9885821}
-  m_LocalPosition: {x: 0, y: 6.81, z: -9.54}
+  m_LocalRotation: {x: 0.13630024, y: 0.000000014762098, z: -0.000000002031032, w: 0.9906676}
+  m_LocalPosition: {x: 0, y: 6.81, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7204,7 +7204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 6.81, z: -9.54}
+  m_FollowOffset: {x: 0, y: 6.81, z: -12}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1

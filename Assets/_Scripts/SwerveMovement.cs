@@ -62,20 +62,22 @@ public class SwerveMovement : MonoBehaviour
 
 
 
-                transform.Translate(swerveAmountX, 0, 0);
-                transform.rotation = Quaternion.Euler(0, swerveAmountX * 10, 0);
+                //transform.Translate(swerveAmountX, 0, 0);
+                transform.localPosition = new Vector3(transform.localPosition.x + swerveAmountX, 0, 0);
+                transform.rotation = Quaternion.Euler(0, swerveAmountX * 80, 0);
+               // transform.Rotate(0, swerveAmountX * 20, 0);
 
-                var pos = transform.position;
-                if (transform.position.x > maxSwervePos)
+                var pos = transform.localPosition;
+                if (transform.localPosition.x > maxSwervePos)
                 {
                     pos.x = maxSwervePos;
                 }
-                else if (transform.position.x < -maxSwervePos)
+                else if (transform.localPosition.x < -maxSwervePos)
                 {
                     pos.x = -maxSwervePos;
                 }
-                transform.position = pos;
-
+                transform.localPosition = pos;
+   
             }
             else if (Input.GetMouseButtonUp(0))
             {

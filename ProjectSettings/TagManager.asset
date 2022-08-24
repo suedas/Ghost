@@ -39,6 +39,7 @@ TagManager:
   - basamakbutton
   - fanbutton
   - fall
+  - human
   layers:
   - Default
   - TransparentFX
