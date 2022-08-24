@@ -38,6 +38,7 @@ TagManager:
   - boslukbutton
   - basamakbutton
   - fanbutton
+  - fall
   layers:
   - Default
   - TransparentFX
