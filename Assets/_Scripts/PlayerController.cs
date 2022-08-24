@@ -181,21 +181,20 @@ public class PlayerController : MonoBehaviour
                 other.transform.GetChild(2).GetChild(0).GetComponent<Animator>().enabled = false;
                 int boxChild = other.transform.GetChild(2).GetChild(0).childCount;
 
-
-                other.transform.GetChild(2).GetChild(0).GetChild(0).DOLocalMove(new Vector3(0, 5.1f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(1).DOLocalMove(new Vector3(-1, 3.4f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(2).DOLocalMove(new Vector3(1, 3.4f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(3).DOLocalMove(new Vector3(-2,1.7f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(4).DOLocalMove(new Vector3(2, 1.7f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(5).DOLocalMove(new Vector3(0, 1.7f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(6).DOLocalMove(new Vector3(-1,0, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(7).DOLocalMove(new Vector3(1, 0f, -9f), .5f).SetEase(Ease.OutBounce);
-                other.transform.GetChild(2).GetChild(0).GetChild(8).DOLocalMove(new Vector3(0, -1.7f, -9f), .5f).SetEase(Ease.OutBounce).OnComplete(() =>
+                other.transform.GetChild(2).GetChild(0).GetChild(0).DOLocalMove(new Vector3(0, 5.1f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(1).DOLocalMove(new Vector3(-1, 3.4f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(2).DOLocalMove(new Vector3(1, 3.4f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(3).DOLocalMove(new Vector3(-2,1.7f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(4).DOLocalMove(new Vector3(2, 1.7f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(5).DOLocalMove(new Vector3(0, 1.7f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(6).DOLocalMove(new Vector3(-1,0, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(7).DOLocalMove(new Vector3(1, 0f, -11.9f), .5f).SetEase(Ease.OutBounce);
+                other.transform.GetChild(2).GetChild(0).GetChild(8).DOLocalMove(new Vector3(0, -1.7f, -11.9f), .5f).SetEase(Ease.OutBounce).OnComplete(() =>
                     {
                         SwerveMovement.instance.isSwipe = true;
                         anim.SetBool("run", true);
                         anim.SetBool("idle", false);
-                        PlayerMovement.instance.speed = 6f; }); 
+                        PlayerMovement.instance.speed = 10f; }); 
 
 
 
@@ -232,7 +231,7 @@ public class PlayerController : MonoBehaviour
 
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
-                    PlayerMovement.instance.speed = 6f;
+                    PlayerMovement.instance.speed = 10f;
                 });  
                     
             }
@@ -252,7 +251,7 @@ public class PlayerController : MonoBehaviour
                     SwerveMovement.instance.isSwipe = true;
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
-                    PlayerMovement.instance.speed = 6;
+                    PlayerMovement.instance.speed = 10;
                 }); ;
             }
         }
@@ -270,7 +269,7 @@ public class PlayerController : MonoBehaviour
                     SwerveMovement.instance.isSwipe = true;
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
-                    PlayerMovement.instance.speed = 6;
+                    PlayerMovement.instance.speed = 10;
                 }); ;
             }
         }
@@ -295,7 +294,7 @@ public class PlayerController : MonoBehaviour
                     other.gameObject.transform.GetChild(2).DOMoveY(17.5f, 2f);
                     anim.SetBool("run", true);
                     anim.SetBool("idle", false);
-                    PlayerMovement.instance.speed = 6;
+                    PlayerMovement.instance.speed = 10;
                 });
 
             }
@@ -304,7 +303,7 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("finish"))
         {
 
-            PlayerMovement.instance.speed = 10f;
+            PlayerMovement.instance.speed = 12f;
             ruzgar.SetActive(true);
         
         }
@@ -488,7 +487,7 @@ public class PlayerController : MonoBehaviour
     public void PreStartingEvents()
 	{
         //transform.Rotate(0, 180, 0);
-        PlayerMovement.instance.speed = 6f;
+        PlayerMovement.instance.speed = 10f;
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);
         blendOne = 0;
@@ -527,7 +526,7 @@ public class PlayerController : MonoBehaviour
 
         GameManager.instance.levelScore = 0;
         GameManager.instance.isContinue = true;
-        PlayerMovement.instance.speed = 6f;
+        PlayerMovement.instance.speed = 10f;
         //anim.SetBool("idle", false);
         anim.SetBool("run", true);
 	}

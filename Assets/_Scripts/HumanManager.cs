@@ -137,7 +137,7 @@ public class HumanManager : MonoBehaviour
         PlayerController.instance.idleGhost.enabled = true;
         TailController.instance.sagTail.TailAnimatorAmount = 0f;
         TailController.instance.solTail.TailAnimatorAmount = 0f;
-        PlayerMovement.instance.speed = 6f;
+        PlayerMovement.instance.speed = 10f;
    
     }
 
