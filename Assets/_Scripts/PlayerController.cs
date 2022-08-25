@@ -69,8 +69,8 @@ public class PlayerController : MonoBehaviour
         {
             if (gameObject.tag=="Player")
             {
-                other.gameObject.transform.DOMove(diamondTarget.transform.position, .5f).OnComplete(()=> { other.gameObject.SetActive(false); });
-                other.gameObject.transform.DOScale(.2f, .2f);
+                other.gameObject.transform.DOMove(diamondTarget.transform.position, .5f).OnComplete(()=> { Destroy(other.gameObject); });
+                other.gameObject.transform.DOScale(.25f, .2f);
                 GameManager.instance.IncreaseScore();
             }
         }

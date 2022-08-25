@@ -20,7 +20,7 @@ public class UiController : MonoBehaviour
 
 	private void Start()
 	{
-		//PlayerPrefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 		gamePanel.SetActive(true);
 		tapToStartPanel.SetActive(true);
 		winPanel.SetActive(false);
