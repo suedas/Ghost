@@ -102,14 +102,15 @@ public class PlayerController : MonoBehaviour
             if (gameObject.tag=="Player")
             {
                 //gameObject.GetComponent<Rigidbody>().useGravity = true;
+                cb.enabled = false;
                 //SwerveMovement.instance.isSwipe = false;
                 anim.SetBool("fall", true);
                 anim.SetBool("run", false);
-                gameObject.transform.DOMove(new Vector3(transform.position.x, -10f, transform.position.z + 25), 3f);
+                gameObject.transform.DOMove(new Vector3(transform.position.x, -10f, transform.position.z + 25), 1.2f).OnComplete(()=> {
+                    UiController.instance.OpenLosePanel();
+                });
                   
-                UiController.instance.OpenLosePanel();
                
-               // cb.enabled = false;
 
             }
             else if (gameObject.tag=="ghost")
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
                 StartCoroutine(huplet());
                 gameObject.transform.DOMoveY(-1, .2f);
-                UiController.instance.OpenLosePanel();
+              
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
                 PlayerMovement.instance.speed = 0;
@@ -379,7 +380,7 @@ public class PlayerController : MonoBehaviour
                 TailController.instance.sagTail.TailAnimatorAmount = 1.3f;
                 TailController.instance.solTail.TailAnimatorAmount = 1.3f;
                 skinnedMeshRenderer.SetBlendShapeWeight(0, 0);
-                StartCoroutine(huplet());
+                StartCoroutine(OyunSonuhuplet ());
                 gameObject.transform.DOMoveY(-1, .2f);
                 // hüpp animasyonu :))
                 GameManager.instance.isContinue = false;
@@ -460,7 +461,30 @@ public class PlayerController : MonoBehaviour
         idleGhost.enabled = true;
         TailController.instance.sagTail.TailAnimatorAmount = 0;
         TailController.instance.solTail.TailAnimatorAmount = 0;
+        UiController.instance.OpenLosePanel();
     }
+    public IEnumerator OyunSonuhuplet()
+    {
+
+        while (blendOne<100)
+        {
+
+            Debug.Log("huplet");
+                skinnedMeshRenderer.SetBlendShapeWeight(1, blendOne);
+                blendOne+=3;
+                if (blendOne >= 70)
+                {
+                    StartCoroutine(scale());
+                }
+
+            yield return new WaitForSeconds(.01f);
+        }
+        idleGhost.enabled = true;
+        TailController.instance.sagTail.TailAnimatorAmount = 0;
+        TailController.instance.solTail.TailAnimatorAmount = 0;
+        UiController.instance.OpenWinPanel();
+    }
+
     public IEnumerator scale()
     {
 
@@ -475,8 +499,7 @@ public class PlayerController : MonoBehaviour
         }
         yield return new WaitForSeconds(0.01f);
         fýckP.SetActive(true);
-        //UiController.instance.OpenLosePanel();
-
+        
     }
 
     /// <summary>
@@ -487,6 +510,7 @@ public class PlayerController : MonoBehaviour
     public void PreStartingEvents()
 	{
         //transform.Rotate(0, 180, 0);
+        cb.enabled =true;
         PlayerMovement.instance.speed = 10f;
         skinnedMeshRenderer.SetBlendShapeWeight(1, 0);
         skinnedMeshRenderer.SetBlendShapeWeight(2, 0);

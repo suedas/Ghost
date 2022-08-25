@@ -61,6 +61,7 @@ public class HumanManager : MonoBehaviour
         else if (other.CompareTag("Player"))
         {
             Debug.Log("Player girdi");
+            other.transform.DOMoveZ(other.transform.position.z + 2, .2f);
             SwerveMovement.instance.isSwipe = false;
             PlayerMovement.instance.speed = 0;
             PlayerController.instance.anim.SetBool("run", false);

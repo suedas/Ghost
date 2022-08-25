@@ -129,6 +129,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[8]
       value: 
       objectReference: {fileID: 2100000, guid: 12634e13e0ea040f18e3c0ef503c889e, type: 2}
+    - target: {fileID: 7578128494083286605, guid: e2707bd6bff53c64a8e17904222fc273, type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8548675291294198677, guid: e2707bd6bff53c64a8e17904222fc273, type: 3}
       propertyPath: m_Enabled
       value: 0
