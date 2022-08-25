@@ -185,7 +185,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8612313}
-  m_LocalRotation: {x: 0.13630025, y: -1.7597791e-15, z: 2.007327e-17, w: 0.9906676}
+  m_LocalRotation: {x: 0.13630025, y: -8.881784e-16, z: 8.782088e-24, w: 0.9906676}
   m_LocalPosition: {x: 0, y: 6.81, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6692,7 +6692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ghost: {fileID: 500997608}
   player: {fileID: 1708328260}
-  cb: {fileID: 0}
+  cb: {fileID: 8612314}
   skinnedMeshRenderer: {fileID: 803559107}
   skinnedMesh: {fileID: 5233469935513852554, guid: ce0a00a423bd5884e9f4790803d94fa0, type: 3}
   circleP: {fileID: 2045162084}
@@ -7033,7 +7033,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654838904}
-  m_LocalRotation: {x: 0.13630025, y: -1.7597791e-15, z: 2.007327e-17, w: 0.9906676}
+  m_LocalRotation: {x: 0.13630025, y: -8.881784e-16, z: 8.782088e-24, w: 0.9906676}
   m_LocalPosition: {x: 0, y: 6.81, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

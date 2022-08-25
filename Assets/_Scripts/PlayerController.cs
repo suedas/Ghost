@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
             {
                 //SwerveMovement.instance.isSwipe = false;
                 GameManager.instance.isContinue = false;
-                gameObject.transform.DOMoveY(9, 1).SetEase(Ease.Linear);
+                gameObject.transform.DOMoveY(12 , 1).SetEase(Ease.Linear);
                 UiController.instance.OpenLosePanel();
                
             }
